@@ -17,10 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('titulo')->unique();
             $table->text('description')->nullable();
-            $table->unsignedBigInteger("subcategoria_id");
-            $table->foreign("subcategoria_id")->references("id")->on("subcategorias");
-            $table->unsignedBigInteger("estado_id");
-            $table->foreign("estado_id")->references("id")->on("estados");
+            $table->text('imagen')->nullable();
+            $table->unsignedBigInteger("user_id");
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('subcategoria_id');
+            $table->string('telefono');
+            $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
+            $table->unsignedBigInteger('estado_id');
+            $table->foreign('estado_id')->references('id')->on('estados');
+            $table->string('provincia',2);
+            $table->string('cod_postal',5);
             $table->timestamps();
         });
     }
