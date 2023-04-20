@@ -18,17 +18,13 @@ class CategoriaSeeder extends Seeder
         //
         $data = [
             [
-                'nombre' => "Coches"
-            ],
-            [
-
-                'nombre' => "Motos"
-            ],
-            [
                 'nombre' => "Motor y accesorios"
             ],
             [
-                'nombre' => "Inmobiliaria"
+                'nombre' => "Moda y accesorios"
+            ],
+            [
+                'nombre' => "Alquiler"
             ],
             [
                 'nombre' => "TV, audio y foto"
@@ -43,10 +39,10 @@ class CategoriaSeeder extends Seeder
                 'nombre' => "Deporte y ocio"
             ],
             [
-                'nombre' => "Bicicletas"
+                'nombre' => "Consolas y videojuegos"
             ],
             [
-                'nombre' => "Consolas y videojuegos"
+                'nombre' => "Bicicletas"
             ],
             [
                 'nombre' => "Hogar y jardín"
@@ -62,9 +58,6 @@ class CategoriaSeeder extends Seeder
             ],
             [
                 'nombre' => "Coleccionismo"
-            ],
-            [
-                'nombre' => "Construcción y reformas"
             ],
             [
                 'nombre' => "Empleo"

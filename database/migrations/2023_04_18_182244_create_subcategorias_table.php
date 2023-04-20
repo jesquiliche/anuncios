@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('subcategorias', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre",150)->unique();
+            $table->string("nombre",150);
+            $table->unique('id','nombre');
             $table->text("descripcion")->nullable();
             $table->text("imagen")->nullable();
             $table->unsignedBigInteger("categoria_id");
