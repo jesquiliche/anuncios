@@ -21,6 +21,9 @@ return new class extends Migration
             $table->foreign("subcategoria_id")->references("id")->on("subcategorias");
             $table->unsignedBigInteger("estado_id");
             $table->foreign("estado_id")->references("id")->on("estados");
+            $table->unsignedBigInteger("foto_id");
+            $table->foreign("foto_id")->references("id")->on("fotos");
+
 
             $table->timestamps();
         });
