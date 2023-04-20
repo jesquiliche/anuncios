@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('fotos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('path')->unique();
+            $table->unsignedBigInteger("anuncio_id");
+            $table->foreign("anuncio_id")->references("id")->on("anuncios");
             $table->timestamps();
         });
     }
