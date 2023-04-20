@@ -243,6 +243,38 @@ class SubcategoriaSeeder extends Seeder
             [
                 'categoria_id'=>8,
                 'nombre' => "Otros"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Bicicletas ciudad"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Bicicletas de carretera"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Bicicletas plegables"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Bicicletas eléctricas"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Bicicletas Infantiles"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Bicicletas Infantiles"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Bicicletas Estaticas"
+            ],
+            [
+                'categoria_id'=>9,
+                'nombre' => "Otros"
             ]
         ];
         DB::table('subcategorias')->insert($data);
