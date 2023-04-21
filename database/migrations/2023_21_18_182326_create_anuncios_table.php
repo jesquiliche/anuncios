@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('anuncios', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo')->unique();
+            $table->string('titulo');
             $table->text('description')->nullable();
             $table->text('imagen')->nullable();
+            $table->decimal('precio', 10, 2)->default(0);
             $table->unsignedBigInteger("user_id");
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('subcategoria_id');

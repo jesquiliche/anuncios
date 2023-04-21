@@ -275,6 +275,22 @@ class SubcategoriaSeeder extends Seeder
             [
                 'categoria_id'=>9,
                 'nombre' => "Otros"
+            ],
+            [
+                'categoria_id'=>10,
+                'nombre' => "Caseta préfabricada"
+            ],
+            [
+                'categoria_id'=>10,
+                'nombre' => "Mueble de cocina"
+            ],
+            [
+                'categoria_id'=>10,
+                'nombre' => "Mesa para jardin"
+            ],
+            [
+                'categoria_id'=>10,
+                'nombre' => "Otro"
             ]
         ];
         DB::table('subcategorias')->insert($data);
