@@ -27,26 +27,26 @@ class AnuncioSeeder extends Seeder
 
         DB::table('anuncios')->delete();
 
-        foreach($archivos as $archivo) {
-            $json = File::get($directorio.$archivo);
-            $data = json_decode($json);
-            foreach ($data as $obj) {
-                Anuncio::create(array(
-                    "titulo"=>$obj->titulo,
-                    "description"=>$obj->description,
-                    "imagen"=>$obj->imagen,
-                    "user_id"=>$obj->user_id,
-                    "subcategoria_id"=>$obj->subcategoria_id,
-                    "telefono"=>$obj->telefono,
-                    "estado_id"=>$obj->estado_id,
-                    "provincia"=>$obj->provincia,
-                    "cod_postal"=>$obj->cod_postal,
-                    "precio"=>$obj->precio
-                
-                ));
-            }   
-  
+        foreach ($archivos as $archivo) {
+            if ($archivo != 'poblaciones') {
+                $json = File::get($directorio . $archivo);
+                $data = json_decode($json);
+                foreach ($data as $obj) {
+                    Anuncio::create(array(
+                        "titulo" => $obj->titulo,
+                        "description" => $obj->description,
+                        "imagen" => $obj->imagen,
+                        "user_id" => $obj->user_id,
+                        "subcategoria_id" => $obj->subcategoria_id,
+                        "telefono" => $obj->telefono,
+                        "estado_id" => $obj->estado_id,
+                        "provincia" => $obj->provincia,
+                        "cod_postal" => $obj->cod_postal,
+                        "precio" => $obj->precio
+
+                    ));
+                }
+            }
         }
-      
     }
 }

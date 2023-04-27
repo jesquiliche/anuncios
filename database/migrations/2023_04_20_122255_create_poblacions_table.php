@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('poblacions', function (Blueprint $table) {
+        Schema::create('poblaciones', function (Blueprint $table) {
             $table->id();
+            $table->string("codigo",5)->unique();
+            $table->string("nombre");
+            $table->string("provincia_cod",2);
+           
             $table->timestamps();
         });
     }
