@@ -14,11 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('poblaciones', function (Blueprint $table) {
-            $table->id();
-            $table->string("codigo",5)->unique();
+    
+            $table->string("codigo",5)->primary();
             $table->string("nombre");
             $table->string("provincia_cod",2);
-           
+        
+            $table->foreign("provincia_cod")->on("provincias")->references("codigo");
+            $table->foreign("codigo")->on("anuncios")->references("cod_postal");
             $table->timestamps();
         });
     }
