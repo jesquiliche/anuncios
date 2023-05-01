@@ -34,5 +34,10 @@ class Anuncio extends Model
     public function fotos(){
         return $this->hasMany('App\Models\Foto');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
  
 }

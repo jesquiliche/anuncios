@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Provincia extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'codigo';
+
+    public $incrementing = false;
+
+    protected $fillable = ['codigo', 'nombre'];
 }
