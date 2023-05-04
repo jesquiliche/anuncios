@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string("codigo",5)->primary();
             $table->string("nombre");
             $table->string("provincia_cod",2);
-        
             $table->foreign("provincia_cod")->on("provincias")->references("codigo");
-            $table->foreign("codigo")->on("anuncios")->references("cod_postal");
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('poblacions');
+        Schema::dropIfExists('poblaciones');
     }
 };

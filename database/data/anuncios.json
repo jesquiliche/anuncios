@@ -8,7 +8,7 @@
         "telefono": "123456789",
         "estado_id": 1,
         "provincia": "MA",
-        "cod_postal": "28001",
+        "cod_postal": "08921",
         "created_at": "2023-04-22 11:30:00",
         "updated_at": "2023-04-22 11:30:00",
         "precio": "99.99"
@@ -22,7 +22,7 @@
         "telefono": "123456789",
         "estado_id": 2,
         "provincia": "NY",
-        "cod_postal": "10001",
+        "cod_postal": "08921",
         "precio": "50",
         "created_at": "2023-04-21 12:30:00",
         "updated_at": "2023-04-21 12:30:00"
@@ -37,7 +37,7 @@
         "estado_id": 3,
         "provincia": "CA",
         "precio": "499.99",
-        "cod_postal": "90210",
+        "cod_postal": "08921",
         "created_at": "2023-04-20 10:45:00",
         "updated_at": "2023-04-20 10:45:00"
     },
@@ -51,7 +51,7 @@
         "estado_id": 1,
         "provincia": "FL",
         "precio": "499.99",
-        "cod_postal": "33131",
+        "cod_postal": "08921",
         "created_at": "2023-04-19 16:20:00",
         "updated_at": "2023-04-19 16:20:00"
     },
@@ -66,7 +66,7 @@
         "estado_id": 1,
         "provincia": "M",
         "precio": "499.99",
-        "cod_postal": "28001",
+        "cod_postal": "08921",
         "created_at": "2023-04-22T00:00:00.000000Z",
         "updated_at": "2023-04-22T00:00:00.000000Z"
     },
@@ -80,7 +80,7 @@
         "estado_id": 2,
         "provincia": "AL",
         "precio": "499.99",
-        "cod_postal": "04001",
+        "cod_postal": "08921",
         "created_at": "2023-04-22T00:00:00.000000Z",
         "updated_at": "2023-04-22T00:00:00.000000Z"
     },
@@ -94,7 +94,7 @@
         "estado_id": 3,
         "precio": "499.99",
         "provincia": "B",
-        "cod_postal": "08024",
+        "cod_postal": "08921",
         "created_at": "2023-04-22T00:00:00.000000Z",
         "updated_at": "2023-04-22T00:00:00.000000Z"
     },
@@ -108,7 +108,7 @@
         "telefono": "555-1234",
         "estado_id": 1,
         "provincia": "BC",
-        "cod_postal": "12345",
+        "cod_postal": "08921",
         "created_at": "2023-04-21T12:00:00Z",
         "updated_at": "2023-04-21T12:00:00Z",
         "precio": "99.99"
@@ -123,7 +123,7 @@
         "estado_id": 2,
         "provincia": "AL",
         "precio": "499.99",
-        "cod_postal": "54321",
+        "cod_postal": "08921",
         "created_at": "2023-04-21T13:00:00Z",
         "updated_at": "2023-04-21T13:00:00Z"
     },
@@ -136,7 +136,7 @@
         "telefono": "555-9012",
         "estado_id": 3,
         "provincia": "CA",
-        "cod_postal": "67890",
+        "cod_postal": "08921",
         "created_at": "2023-04-21T14:00:00Z",
         "updated_at": "2023-04-21T14:00:00Z",
         "precio": "499.99"
@@ -151,7 +151,7 @@
         "telefono": "555-555-555",
         "estado_id": 1,
         "provincia": "AL",
-        "cod_postal": "04001",
+        "cod_postal": "08921",
         "precio": "499.99"
     },
     {
@@ -163,7 +163,7 @@
         "telefono": "555-555-555",
         "estado_id": 2,
         "provincia": "CA",
-        "cod_postal": "90210",
+        "cod_postal": "08921",
         "precio": "899.99"
     },
     {
@@ -175,7 +175,7 @@
         "telefono": "555-555-555",
         "estado_id": 3,
         "provincia": "TX",
-        "cod_postal": "77001",
+        "cod_postal": "08921",
         "precio": "7999.99"
     },
     {
@@ -187,7 +187,7 @@
         "telefono": "555-555-555",
         "estado_id": 1,
         "provincia": "NY",
-        "cod_postal": "10001",
+        "cod_postal": "08921",
         "precio": "149.99"
     },
     {
@@ -199,7 +199,7 @@
         "telefono": "555-555-555",
         "estado_id": 2,
         "provincia": "FL",
-        "cod_postal": "33101",
+        "cod_postal": "08921",
         "precio": "399.99"
     }   
 ]
