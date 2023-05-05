@@ -7,79 +7,58 @@ use Illuminate\Http\Request;
 
 class PoblacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $poblaciones = Poblacion::all();
+        return view('poblaciones.index', compact('poblaciones'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($codigo)
+    {
+        $poblacion = Poblacion::findOrFail($codigo);
+        return view('poblaciones.show', compact('poblacion'));
+    }
+
     public function create()
     {
-        //
+        return view('poblaciones.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'codigo' => 'required|unique:poblaciones|numeric',
+            'nombre' => 'required|string',
+            'provincia_cod' => 'required|numeric'
+        ]);
+
+        $poblacion = Poblacion::create($validatedData);
+        return redirect()->route('poblaciones.show', $poblacion->codigo);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Poblacion  $poblacion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Poblacion $poblacion)
+    public function edit($codigo)
     {
-        //
+        $poblacion = Poblacion::findOrFail($codigo);
+        return view('poblaciones.edit', compact('poblacion'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Poblacion  $poblacion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Poblacion $poblacion)
+    public function update(Request $request, $codigo)
     {
-        //
+        $validatedData = $request->validate([
+            'codigo' => 'required|unique:poblaciones,codigo,'.$codigo.'|numeric',
+            'nombre' => 'required|string',
+            'provincia_cod' => 'required|numeric'
+        ]);
+
+        $poblacion = Poblacion::findOrFail($codigo);
+        $poblacion->update($validatedData);
+        return redirect()->route('poblaciones.show', $poblacion->codigo);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Poblacion  $poblacion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Poblacion $poblacion)
+    public function destroy($codigo)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Poblacion  $poblacion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Poblacion $poblacion)
-    {
-        //
+        $poblacion = Poblacion::findOrFail($codigo);
+        $poblacion->delete();
+        return redirect()->route('poblaciones.index');
     }
 }

@@ -7,79 +7,63 @@ use Illuminate\Http\Request;
 
 class ProvinciaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $provincias = Provincia::all();
+        return view('provincias.index', compact('provincias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($codigo)
+    {
+        $provincia = Provincia::findOrFail($codigo);
+        return view('provincias.show', compact('provincia'));
+    }
+
     public function create()
     {
-        //
+        return view('provincias.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'codigo' => ['required', 'unique:provincias,codigo'],
+            'nombre' => ['required', 'max:255'],
+        ]);
+
+        $provincias = $request->input('provincias');
+        Provincia::insert($provincias);
+
+        return redirect()->route('provincias.index')
+            ->with('success', 'Provincias creadas correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Provincia  $provincia
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Provincia $provincia)
+    public function edit($codigo)
     {
-        //
+        $provincia = Provincia::findOrFail($codigo);
+        return view('provincias.edit', compact('provincia'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Provincia  $provincia
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Provincia $provincia)
+    public function update(Request $request, $codigo)
     {
-        //
+        $request->validate([
+            'nombre' => ['required', 'max:255'],
+        ]);
+
+        $provincia = Provincia::findOrFail($codigo);
+        $provincia->nombre = $request->input('nombre');
+        $provincia->save();
+
+        return redirect()->route('provincias.show', $provincia->codigo)
+            ->with('success', 'Provincia actualizada correctamente.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Provincia  $provincia
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Provincia $provincia)
+    public function destroy($codigo)
     {
-        //
-    }
+        $provincia = Provincia::findOrFail($codigo);
+        $provincia->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Provincia  $provincia
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Provincia $provincia)
-    {
-        //
+        return redirect()->route('provincias.index')
+            ->with('success', 'Provincia eliminada correctamente.');
     }
 }

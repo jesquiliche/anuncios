@@ -7,79 +7,56 @@ use Illuminate\Http\Request;
 
 class FotoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $fotos = Foto::all();
+        return view('fotos.index', compact('fotos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($id)
+    {
+        $foto = Foto::findOrFail($id);
+        return view('fotos.show', compact('foto'));
+    }
+
     public function create()
     {
-        //
+        return view('fotos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'path' => 'required',
+            'anuncio_id' => 'required|exists:anuncios,id'
+        ]);
+
+        Foto::create($data);
+        return redirect()->route('fotos.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Foto  $foto
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Foto $foto)
+    public function edit($id)
     {
-        //
+        $foto = Foto::findOrFail($id);
+        return view('fotos.edit', compact('foto'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Foto  $foto
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Foto $foto)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'path' => 'required',
+            'anuncio_id' => 'required|exists:anuncios,id'
+        ]);
+
+        $foto = Foto::findOrFail($id);
+        $foto->update($data);
+        return redirect()->route('fotos.show', $foto->id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Foto  $foto
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Foto $foto)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Foto  $foto
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Foto $foto)
-    {
-        //
+        $foto = Foto::findOrFail($id);
+        $foto->delete();
+        return redirect()->route('fotos.index');
     }
 }

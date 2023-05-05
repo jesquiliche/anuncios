@@ -7,79 +7,46 @@ use Illuminate\Http\Request;
 
 class EstadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $estados = Estado::all();
+        return view('estados.index', compact('estados'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($id)
+    {
+        $estado = Estado::findOrFail($id);
+        return view('estados.show', compact('estado'));
+    }
+
     public function create()
     {
-        //
+        return view('estados.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $estado = Estado::create($request->all());
+        return redirect()->route('estados.show', $estado->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Estado  $estado
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Estado $estado)
+    public function edit($id)
     {
-        //
+        $estado = Estado::findOrFail($id);
+        return view('estados.edit', compact('estado'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Estado  $estado
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Estado $estado)
+    public function update(Request $request, $id)
     {
-        //
+        $estado = Estado::findOrFail($id);
+        $estado->update($request->all());
+        return redirect()->route('estados.show', $estado->id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Estado  $estado
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Estado $estado)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Estado  $estado
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Estado $estado)
-    {
-        //
+        $estado = Estado::findOrFail($id);
+        $estado->delete();
+        return redirect()->route('estados.index');
     }
 }

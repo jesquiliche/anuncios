@@ -7,79 +7,83 @@ use Illuminate\Http\Request;
 
 class AnuncioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $anuncios = Anuncio::all();
+        return view('anuncios.index', compact('anuncios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($id)
+    {
+        $anuncio = Anuncio::findOrFail($id);
+        return view('anuncios.show', compact('anuncio'));
+    }
+
     public function create()
     {
-        //
+        return view('anuncios.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'imagen' => 'nullable|image|max:2048',
+            'precio' => 'nullable|numeric',
+            'subcategoria_id' => 'required|exists:subcategorias,id',
+            'provincia' => 'required|string|max:255',
+            'codprovincia' => 'required|string|max:255',
+        ]);
+
+        $anuncio = new Anuncio($request->all());
+
+        if ($request->hasFile('imagen')) {
+            $path = $request->file('imagen')->store('public/images');
+            $anuncio->imagen = $path;
+        }
+
+        $anuncio->save();
+
+        return redirect()->route('anuncios.show', $anuncio->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Anuncio  $anuncio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Anuncio $anuncio)
+    public function edit($id)
     {
-        //
+        $anuncio = Anuncio::findOrFail($id);
+        return view('anuncios.edit', compact('anuncio'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Anuncio  $anuncio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Anuncio $anuncio)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'imagen' => 'nullable|image|max:2048',
+            'precio' => 'nullable|numeric',
+            'subcategoria_id' => 'required|exists:subcategorias,id',
+            'provincia' => 'required|string|max:255',
+            'codprovincia' => 'required|string|max:255',
+        ]);
+
+        $anuncio = Anuncio::findOrFail($id);
+
+        $anuncio->fill($request->all());
+
+        if ($request->hasFile('imagen')) {
+            $path = $request->file('imagen')->store('public/images');
+            $anuncio->imagen = $path;
+        }
+
+        $anuncio->save();
+
+        return redirect()->route('anuncios.show', $anuncio->id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Anuncio  $anuncio
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Anuncio $anuncio)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Anuncio  $anuncio
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Anuncio $anuncio)
-    {
-        //
+        $anuncio = Anuncio::findOrFail($id);
+        $anuncio->delete();
+        return redirect()->route('anuncios.index');
     }
 }
