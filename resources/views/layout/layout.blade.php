@@ -421,9 +421,9 @@
         }
 
         .btn-danger:hover {
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
-            border-color: rgb(249, 173, 30);
-            background-color: rgb(199, 135, 15);
+        
+            border-color: rgb(236, 186, 23);
+            background-color: rgb(236, 186, 23);
         }
 
         .card {
@@ -603,7 +603,7 @@
         <div class="container-fluid fixed-top bg-white">
             <nav class="navbar navbar-expand-lg navbar-light bg-white ">
                 <a class="navbar-brand" href="#">
-                    <img src="images/logo_low.png" width="60" alt="..." loading="lazy">
+                    <img src="/images/logo.png" width="60" alt="..." loading="lazy">
                     <b>Anuncios segunda mano</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -614,7 +614,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#"><i class="fas fa-home"></i> Home<span
+                            <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i> Home<span
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">

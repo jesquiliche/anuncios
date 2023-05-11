@@ -34,6 +34,8 @@ Route::middleware([
 
 //Route::get('anuncios/{id}', 'AnuncioController@show')->name('anuncios.show');
 Route::put('anuncios/{id}', [AnuncioController::class,'update'])->name('anuncios.update');
+Route::get('anuncios/categoria/{id}', [AnuncioController::class,'showByCategory'])->name('anuncios.categoria');
 Route::get('anuncios/', [AnuncioController::class,'index'])->name('anuncios.index');
+Route::get('anuncios/{id}', [AnuncioController::class,'show'])->name('anuncios.show');
 
 Route::get('home/', [HomeController::class,'index'])->name('home');

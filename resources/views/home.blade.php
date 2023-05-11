@@ -100,17 +100,24 @@
             <h3 class="text-center"><b>Destacados</b></h3>
             <div class="row">
                 @foreach ($anuncios as $anuncio)
-                    <div class="card col-lg-5 mx-auto my-2">
+                    <div class="card col-lg-4 mx-auto my-1">
+                      <a href="/anuncios/{{$anuncio->id}}">
                         <div class="card-title m-1">
                             <p><b>{{ $anuncio->titulo }}</b></p>
                         </div>
                         <div class="card-body m-1">
-                            <p><b>{{ $anuncio->description }}</b></p>
+                           
                             precio : <b>{{ $anuncio->precio }}</b>
                             <img src="{{ $anuncio->imagen }}" class="d-block w-100" alt="{{ $anuncio->titulo }}">
-                        </div>
+                            
+                            <p>{{ $anuncio->description }}</p>
+                            
+                            
+                          </div>
+                      </a>
                     </div>
                 @endforeach
             </div>
+        </div>
 
         @endsection

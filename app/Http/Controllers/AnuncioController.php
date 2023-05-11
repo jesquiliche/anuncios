@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 class AnuncioController extends Controller
@@ -16,7 +17,14 @@ class AnuncioController extends Controller
     public function show($id)
     {
         $anuncio = Anuncio::findOrFail($id);
+        
         return view('anuncios.show', compact('anuncio'));
+    }
+
+    public function showByCategory($id)
+    {
+        $anuncios = Anuncio::wwhere('subcategoria_id', $id)->get();
+        return view('anuncios.showByCategory', compact('anuncios'));
     }
 
     public function create()

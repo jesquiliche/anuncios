@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index(){
         $categorias = Categoria::with('subcategorias')->get();
-        $anuncios=Anuncio::all()->take(4);
+        $anuncios=Anuncio::all()->take(6);
         return view('home',compact('categorias','anuncios'));
 
 
