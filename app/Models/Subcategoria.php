@@ -15,11 +15,13 @@ class Subcategoria extends Model
         'categoria_id'
     ];
 
-    public function categoria(){
+    public function categoria()
+    {
         return $this->belongsTo('App\Models\Categoria');
     }
 
-    public function anuncios(){
+    public function anuncios()
+    {
         return $this->hasMany('App\Models\Anuncio');
     }
 }

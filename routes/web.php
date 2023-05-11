@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnuncioController;
 use App\Models\Anuncio;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,11 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//Route::get('anuncios/{id}', 'AnuncioController@show')->name('anuncios.show');
+Route::put('anuncios/{id}', [AnuncioController::class,'update'])->name('anuncios.update');
+Route::get('anuncios/', [AnuncioController::class,'index'])->name('anuncios.index');
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');

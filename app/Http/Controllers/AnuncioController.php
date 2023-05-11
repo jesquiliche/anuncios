@@ -10,6 +10,7 @@ class AnuncioController extends Controller
     public function index()
     {
         $anuncios = Anuncio::all();
+        //return $anuncios;
         return view('anuncios.index', compact('anuncios'));
     }
 
@@ -28,11 +29,12 @@ class AnuncioController extends Controller
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string',
+            'description' => 'required|string',
             'imagen' => 'nullable|image|max:2048',
             'precio' => 'nullable|numeric',
             'subcategoria_id' => 'required|exists:subcategorias,id',
             'provincia' => 'required|string|max:255',
+            'telefono'=>'required|string|max:255',
             'codprovincia' => 'required|string|max:255',
         ]);
 
@@ -45,7 +47,7 @@ class AnuncioController extends Controller
 
         $anuncio->save();
 
-        return redirect()->route('anuncios.show', $anuncio->id);
+     //   return redirect()->route('anuncios.show', $anuncio->id);
     }
 
     public function edit($id)
@@ -58,12 +60,13 @@ class AnuncioController extends Controller
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string',
+            'description' => 'required|string',
             'imagen' => 'nullable|image|max:2048',
             'precio' => 'nullable|numeric',
             'subcategoria_id' => 'required|exists:subcategorias,id',
             'provincia' => 'required|string|max:255',
             'codprovincia' => 'required|string|max:255',
+            'telefono'=>'required|string',
         ]);
 
         $anuncio = Anuncio::findOrFail($id);
@@ -77,7 +80,7 @@ class AnuncioController extends Controller
 
         $anuncio->save();
 
-        return redirect()->route('anuncios.show', $anuncio->id);
+       // return redirect()->route('anuncios.show', $anuncio->id);
     }
 
     public function destroy($id)

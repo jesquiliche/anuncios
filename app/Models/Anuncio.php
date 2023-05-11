@@ -13,25 +13,32 @@ class Anuncio extends Model
 
     protected $fillable = [
         'titulo',
-        'descripcion',
+        'description',
         'imagen',
-        'precio',
+        'user_id',
         'subcategoria_id',
+        'telefono',
+        'estado_id',
         'provincia',
-        'codprovincia'
+        'cod_postal',
+        'precio',
     ];
 
-    public function subcategoria(){
+    public function subcategoria()
+    {
         return $this->belongsTo('App\Models\Subcategoria');
     }
    
-    public function estado(){
+    public function estado()
+    {
         return $this->belongsTo('App\Models\Estado');
     }
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
-    public function fotos(){
+    public function fotos()
+    {
         return $this->hasMany('App\Models\Foto');
     }
 
@@ -39,5 +46,4 @@ class Anuncio extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
- 
 }
