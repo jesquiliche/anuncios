@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Anuncio;
+use App\Models\Provincia;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
         $categorias = Categoria::with('subcategorias')->get();
-    
-
-
-        return view('home',compact('categorias'));
+        $anuncios=Anuncio::all()->take(4);
+        return view('home',compact('categorias','anuncios'));
 
 
     }

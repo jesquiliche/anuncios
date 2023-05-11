@@ -2,7 +2,7 @@
     {
         "titulo": "Bicicleta de montaña en excelente estado",
         "description": "Vendo una bicicleta de montaña en excelente estado, con muy poco uso. Incluye todos los accesorios necesarios para salir a la montaña.",
-        "imagen": "https://www.example.com/images/bicicleta-montana.jpg",
+        "imagen": "/images/bicicleta1.jpg",
         "user_id": 1,
         "subcategoria_id": 1,
         "telefono": "123456789",
@@ -16,7 +16,7 @@
     {
         "titulo": "Juego de pastillas de freno para Volkswagen Golf",
         "description": "Vendo un juego de pastillas de freno nuevas para Volkswagen Golf, compatibles con modelos desde el 2008 en adelante.",
-        "imagen": "https://www.example.com/images/pastillas-de-freno-golf.jpg",
+        "imagen": "/images/pastillas-de-freno.jpg",
         "user_id": 1,
         "subcategoria_id": 3,
         "telefono": "123456789",
@@ -30,7 +30,7 @@
     {
         "titulo": "Vestido de novia usado en perfecto estado",
         "description": "Vendo un vestido de novia usado solamente una vez y en perfecto estado. Talla 38.",
-        "imagen": "https://www.example.com/images/vestido-novia.jpg",
+        "imagen": "/images/novia.jpg",
         "user_id": 2,
         "subcategoria_id": 8,
         "telefono": "987654321",
@@ -44,7 +44,7 @@
     {
         "titulo": "Piso de alquiler en el centro de la ciudad",
         "description": "Se alquila un piso en el centro de la ciudad, totalmente reformado y amueblado. Dispone de 2 habitaciones y 1 baño.",
-        "imagen": "https://www.example.com/images/piso-alquiler.jpg",
+        "imagen": "/images/Piso-playa.jpeg",
         "user_id": 3,
         "subcategoria_id": 9,
         "telefono": "555555555",
@@ -145,7 +145,7 @@
     {
         "titulo": "Bicicleta de montaña",
         "description": "Bicicleta de montaña en perfectas condiciones, talla M, con cambios Shimano y frenos de disco hidráulicos",
-        "imagen": "https://i.imgur.com/pmm1vnj.jpg",
+        "imagen": "https://picsum.photos/200/300/?random",
         "user_id": 3,
         "subcategoria_id": 4,
         "telefono": "555-555-555",
@@ -157,7 +157,7 @@
     {
         "titulo": "iPhone 11 Pro",
         "description": "iPhone 11 Pro de 256GB en color plata, como nuevo, sin arañazos ni golpes. Incluye cargador y auriculares originales",
-        "imagen": "https://i.imgur.com/Ly0CfVw.jpg",
+        "imagen": "https://picsum.photos/200/300/?random",
         "user_id": 2,
         "subcategoria_id": 6,
         "telefono": "555-555-555",
@@ -181,7 +181,7 @@
     {
         "titulo": "Máquina de cortar césped",
         "description": "Máquina de cortar césped eléctrica con potencia de 1800W y anchura de corte de 46cm. En buen estado y con poco uso",
-        "imagen": "https://i.imgur.com/4PfoSPC.jpg",
+        "imagen": "https://picsum.photos/200/300/?random",
         "user_id": 4,
         "subcategoria_id": 2,
         "telefono": "555-555-555",
@@ -193,7 +193,7 @@
     {
         "titulo": "Lavadora LG",
         "description": "Lavadora LG en perfecto estado, con capacidad de carga de 8kg y eficiencia energética A++. Funciona con agua fría y caliente",
-        "imagen": "https://i.imgur.com/DOWU6wz.jpg",
+        "imagen": "https://picsum.photos/200/300/?random",
         "user_id": 1,
         "subcategoria_id": 4,
         "telefono": "555-555-555",

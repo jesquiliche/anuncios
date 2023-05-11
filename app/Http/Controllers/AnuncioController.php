@@ -10,7 +10,6 @@ class AnuncioController extends Controller
     public function index()
     {
         $anuncios = Anuncio::all();
-        //return $anuncios;
         return view('anuncios.index', compact('anuncios'));
     }
 

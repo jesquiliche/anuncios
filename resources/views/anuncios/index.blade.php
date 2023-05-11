@@ -1,0 +1,49 @@
+@extends('layout.layout')
+
+@section('title', 'Página de inicio')
+
+@section('estilos')
+    <style>
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+
+
+            color: black;
+        }
+    </style>
+@endsection
+
+
+
+
+@section('content')
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <section class="container mt-2 ">
+
+
+        <div class="container mt-3 col-lg-12 mx-auto">
+            <h3 class="text-center"><b>Anuncios</b></h3>
+            <div class="row">
+            @foreach ($anuncios as $anuncio)
+                <div class="card col-lg-5 mx-auto my-2">
+                <div class="card-title m-1">
+                <p><b>{{$anuncio->titulo}}</b></p>
+                </div>
+                <div class="card-body m-1">
+                    <p><b>{{$anuncio->description}}</b></p>
+                    precio : <b>{{$anuncio->precio}}</b>
+                    <img src="{{$anuncio->imagen}}" class="d-block w-100" alt="{{ $anuncio->titulo }}">
+                </div>
+                </div>
+        
+            @endforeach
+            </div>
+
+        </div>
+    </section>
+@endsection
