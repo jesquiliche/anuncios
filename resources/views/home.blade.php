@@ -21,8 +21,6 @@
     <br />
     <br />
     <br />
-    <br />
-    <br />
     <section class="container mt-2 ">
         <div class="card col-lg-12 py-2 mx-auto">
 
@@ -74,7 +72,7 @@
                                 @foreach ($categoriasChunk as $categoria)
                                     <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                                         <a href="#">
-                                            <img src="{{ $categoria->imagen }}"" width="100" height="185"
+                                            <img src="{{ $categoria->imagen }}"" width="100" height="180"
                                                 class="d-block w-100" alt="{{ $categoria->nombre }}">
                                             <div class="carousel-caption">
                                                 <h5>{{ $categoria->nombre }}</h5>

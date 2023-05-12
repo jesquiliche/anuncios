@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+    return view('home');
+});*/
 
 Route::middleware([
     'auth:sanctum',
@@ -38,4 +38,4 @@ Route::get('anuncios/categoria/{id}', [AnuncioController::class,'showByCategory'
 Route::get('anuncios/', [AnuncioController::class,'index'])->name('anuncios.index');
 Route::get('anuncios/{id}', [AnuncioController::class,'show'])->name('anuncios.show');
 
-Route::get('home/', [HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class,'index'])->name('home');
