@@ -22,9 +22,9 @@
     <br />
     <br />
     <section class="container mt-2 ">
-        <div class="card col-lg-12 py-2 mx-auto">
+        <div class="card2 col-lg-12 py-2 mx-auto">
 
-            <h3 class="text-center m-5"><b>¿Qué quieres encontrar?</b></h3>
+            <h4 class="text-center m-5"><b class="resaltado">¿Qué quieres encontrar?</b></h4>
             <div class="card-body">
                 <form action="{{ route('home.filter') }}" method="POST">
                     @csrf
@@ -40,8 +40,8 @@
 
                                 @foreach ($categorias as $categoria)
                                     <optgroup label="{{ $categoria->nombre }}">
-                                        <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-                                        @foreach ($categoria->subcategorias as $subcategoria)
+                                        
+                                         @foreach ($categoria->subcategorias as $subcategoria)
                                             <option value="{{ $subcategoria->id }}">{{ $subcategoria->nombre }}</option>
                                         @endforeach
                                     </optgroup>
@@ -105,10 +105,10 @@
             <h3 class="text-center"><b>Destacados</b></h3>
             <div class="row">
                 @foreach ($anuncios as $anuncio)
-                    <div class="card col-lg-4 mx-auto my-1">
+                    <div class="card3 col-lg-4 mx-auto">
                       <a href="/anuncios/{{$anuncio->id}}">
                         <div class="card-title m-1">
-                            <p><b>{{ $anuncio->titulo }}</b></p>
+                            <p class="resaltado">{{ $anuncio->titulo }}</b></p>
                         </div>
                         <div class="card-body m-1">
                            

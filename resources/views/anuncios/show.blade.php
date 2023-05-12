@@ -18,7 +18,7 @@
 
             <div class="card-header m-1">
 
-                <h4 class="text-center"><b>{{ $anuncio->titulo }}</b></h4>
+                <h4 class="resaltado text-center"><b>{{ $anuncio->titulo }}</b></h4>
                 <h5 class="text-center">Precio : <b>{{ $anuncio->precio }}</h5>
                     <h5 class="text-center"></b> Estado :
                     <b>{{ $anuncio->estado->nombre }}</b>

@@ -415,13 +415,13 @@
         }
 
         .btn-danger {
-        
+
             border-color: #d2db4c;
             background-color: #d2db4c;
         }
 
         .btn-danger:hover {
-        
+
             border-color: rgb(236, 186, 23);
             background-color: rgb(236, 186, 23);
         }
@@ -595,44 +595,64 @@
         .carousel-control-next {
             color: red;
         }
+        .resaltado {
+            display: flex inline;
+            font-size: x-large;
+            
+            font-style: bold;
+  
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+            color:rgb(22, 164, 62);
+                  }
+        h3, .card2 {
+            font-style: italic;
+  
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+            color:rgb(22, 164, 62);
+            padding: 10px;
+            box-shadow: 1px 1px 1px grey;
+            background-color: white
+        }
+        .card3 {
+            background-color: white;
+        }
     </style>
     @yield('estilos')
 </head>
 <main>
-    
-        <div class="container-fluid fixed-top bg-white">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white ">
-                <a class="navbar-brand" href="#">
-                    <img src="/images/logo.png" width="60" alt="..." loading="lazy">
-                    <b>Anuncios segunda mano</b></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i> Home<span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-danger" href="">Publicar anuncio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-danger ml-2" href="">Iniciar sesión</a>
-                        </li>
+    <div class="card2 container-fluid fixed-top bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+            <a class="navbar-brand" href="#">
+                <img src="/images/logo.png" width="60" alt="..." loading="lazy">
+                <span class="resaltado">Anuncios segunda mano</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i> Home<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger" href="">Publicar anuncio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger ml-2" href="">Iniciar sesión</a>
+                    </li>
 
 
-                        </li>
-                    </ul>
+                    </li>
+                </ul>
 
-                </div>
-            </nav>
+            </div>
+        </nav>
 
-        </div>
-    
+    </div>
+
     @yield('content')
 
     <footer>
