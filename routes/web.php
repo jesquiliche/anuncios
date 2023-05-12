@@ -39,3 +39,4 @@ Route::get('anuncios/', [AnuncioController::class,'index'])->name('anuncios.inde
 Route::get('anuncios/{id}', [AnuncioController::class,'show'])->name('anuncios.show');
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::post('/anunciosFilter', [HomeController::class,'anunciosFilter'])->name('home.filter');

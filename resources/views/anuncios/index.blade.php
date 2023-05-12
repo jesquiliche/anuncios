@@ -23,27 +23,28 @@
     <br />
     <br />
     <br />
-    <section class="container mt-2 ">
-
-
-        <div class="container mt-3 col-lg-12 mx-auto">
-            <h3 class="text-center"><b>Anuncios</b></h3>
-            <div class="row">
+    <div class="container mt-3 col-lg-10 mx-auto">
+        <h3 class="text-center"><b>Anuncios</b></h3>
+        <div class="row">
             @foreach ($anuncios as $anuncio)
-                <div class="col-lg-5 mx-auto my-2">
-                <div class=" m-1">
-                <p><b>{{$anuncio->titulo}}</b></p>
+                <div class="card col-lg-4 mx-auto my-1">
+                  <a href="/anuncios/{{$anuncio->id}}">
+                    <div class="card-title m-1">
+                        <p><b>{{ $anuncio->titulo }}</b></p>
+                    </div>
+                    <div class="card-body m-1">
+                       
+                        precio : <b>{{ $anuncio->precio }}</b>
+                        <img src="{{ $anuncio->imagen }}" class="d-block w-100" alt="{{ $anuncio->titulo }}">
+                        
+                        <p>{{ $anuncio->description }}</p>
+                        
+                        
+                      </div>
+                  </a>
                 </div>
-                <div class=" m-1">
-                    <p><b>{{$anuncio->description}}</b></p>
-                    precio : <b>{{$anuncio->precio}}</b>
-                    <img src="{{$anuncio->imagen}}" class="d-block w-100" alt="{{ $anuncio->titulo }}">
-                </div>
-                </div>
-        
             @endforeach
-            </div>
-
         </div>
-    </section>
+    </div>
+
 @endsection

@@ -26,13 +26,17 @@
 
             <h3 class="text-center m-5"><b>¿Qué quieres encontrar?</b></h3>
             <div class="card-body">
-                <form class="mx-auto">
+                <form action="{{ route('home.filter') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-4">
-                            <input type="text" class="form-control" placeholder="Que estas buscando...">
+                            <input type="text" 
+                                name="titulo"
+                                class="form-control" 
+                                placeholder="Que estas buscando...">
                         </div>
                         <div class="col-lg-3">
-                            <select name="categorias" class="form-control">
+                            <select name="subcategoria_id" class="form-control">
 
                                 @foreach ($categorias as $categoria)
                                     <optgroup label="{{ $categoria->nombre }}">
@@ -47,7 +51,10 @@
 
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="Localidad">
+                            <input type="text" 
+                                name="poblacion"
+                                class="form-control" 
+                                placeholder="Localidad">
                         </div>
                         <div class="col-lg-2">
                             <input type="submit" value="Buscar" class="form-control btn btn-danger">
