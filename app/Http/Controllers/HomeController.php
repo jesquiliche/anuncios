@@ -13,7 +13,8 @@ class HomeController extends Controller
 {
     public function index(){
         $categorias = Categoria::with('subcategorias')->get();
-        $anuncios=Anuncio::all()->take(6);
+        $anuncios = Anuncio::paginate(3);
+
         return view('home',compact('categorias','anuncios'));
 
 
@@ -62,7 +63,7 @@ class HomeController extends Controller
     
         $categorias=Categoria::all();
         $estados=Estado::all();
-        return view('anuncios.index', compact('anuncios','categorias','estados','poblacion','titulo','subcategoriaId','desde','hasta'));
+        return view('anuncios.indexFilter', compact('anuncios','categorias','estados','poblacion','titulo','subcategoriaId','desde','hasta'));
     
 
     }

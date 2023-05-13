@@ -102,7 +102,7 @@
         </div>
 
         <div class="container-fluid mt-3 col-lg-12 mx-auto">
-            <h3 class="text-center"><b>Destacados</b></h3>
+            <h3 class="text-center"><b>Anuncios</b></h3>
             <div class="row">
                 @foreach ($anuncios as $anuncio)
                     <div class="card3 col-lg-4 mx-auto">
@@ -122,7 +122,21 @@
                       </a>
                     </div>
                 @endforeach
+                
+                <div class="pagination">
+                    @if ($anuncios->previousPageUrl())
+                        <a href="{{ $anuncios->previousPageUrl()  }}" class="btn btn-danger m-1" rel="prev">Anterior</a>
+                    @endif
+                
+                    @if ($anuncios->nextPageUrl())
+                        <a href="{{ $anuncios->nextPageUrl() }}" class="btn btn-danger m-1" rel="next">Siguiente</a>
+                    @endif
+                </div>
+                
+
+                
+
             </div>
         </div>
-
+    </div>
         @endsection

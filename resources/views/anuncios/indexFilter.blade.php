@@ -59,7 +59,7 @@
                                         <p>
                                     </label>
                                     <input type="number" class="form-control" id="desde" name="desde" min="0"
-                                        value=0
+                                        value={{$desde}}
                                         max="10000">
                                 </div>
                                 <div class="col-md-6">
@@ -68,7 +68,7 @@
                                         <p>
                                     </label>
                                     <input type="number" class="form-control" id="hasta" name="hasta" min="0"
-                                        value="10000"
+                                        value={{$hasta}}
                                         max="10000">
                                 </div>
                             </div>

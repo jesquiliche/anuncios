@@ -412,6 +412,9 @@
 
         .btn {
             border-radius: 8px;
+            font-style: bold;
+
+        
         }
 
         .btn-danger {
@@ -595,24 +598,35 @@
         .carousel-control-next {
             color: red;
         }
+
         .resaltado {
             display: flex inline;
-            font-size: x-large;
-            
+            font-size: 20px;
+
             font-style: bold;
-  
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-            color:rgb(22, 164, 62);
-                  }
-        h3, .card2 {
+
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+            color: rgb(22, 164, 62);
+        }
+
+        h3 {
             font-style: italic;
-  
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-            color:rgb(22, 164, 62);
+
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+            color: rgb(22, 164, 62);
+            padding: 10px
+        }
+
+        .card2 {
+            font-style: italic;
+
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+            color: rgb(22, 164, 62);
             padding: 10px;
             box-shadow: 1px 1px 1px grey;
             background-color: white
         }
+
         .card3 {
             background-color: white;
         }
@@ -623,9 +637,9 @@
 
     <div class="card2 container-fluid fixed-top bg-white">
         <nav class="navbar navbar-expand-lg navbar-light bg-white ">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="/images/logo.png" width="60" alt="..." loading="lazy">
-                <span class="resaltado">Anuncios segunda mano</span></a>
+                <span class="nav-item resaltado">Anuncios segunda mano</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -634,14 +648,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i> Home<span
+                        <a class="nav-item" href="{{ route('home') }}"><i class="fas fa-home"></i> Home<span
                                 class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-danger" href="">Publicar anuncio</a>
+                    <li class="nav-item ml-3">
+                        <a  href="">Publicar anuncio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-danger ml-2" href="">Iniciar sesión</a>
+                    <li class="nav-item ml-3">
+                        <a href="">Iniciar sesión</a>
                     </li>
 
 
