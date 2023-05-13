@@ -117,11 +117,11 @@
                     </div>
 
             </div>
-            <div class="container col-lg-8 ">
+            <div class="card3 col-lg-8 mx-auto ">
 
                 <div class="row ">
                     @foreach ($anuncios as $anuncio)
-                        <div class="card3 col-lg-4 mx-auto my-1">
+                        <div class="container col-lg-4 mx-auto my-1">
                             <a href="/anuncios/{{ $anuncio->id }}">
                                 <div class="card-title m-1">
                                     <p class="resaltado">{{ $anuncio->titulo }}</p>

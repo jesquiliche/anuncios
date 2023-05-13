@@ -198,6 +198,22 @@
             padding: 1.5rem
         }
 
+        .zoom {
+  transition: transform .2s; /* Propiedad que indica la duración de la transición */
+}
+
+.zoom:hover {
+  transform: scale(1.2); /* Propiedad que aumenta el tamaño de la imagen */
+}
+
+        .carousel-caption {
+            font-style: italic;
+            font-size:25px;
+
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+color: whitesmoke;
+padding: 10px
+        }
         .py-4 {
             padding-top: 1rem;
             padding-bottom: 1rem

@@ -117,7 +117,7 @@
                     </div>
 
             </div>
-            <div class="container col-lg-8 ">
+            <div class="card3 col-lg-8 mx-auto ">
 
                 <div class="row ">
                     @foreach ($anuncios as $anuncio)
