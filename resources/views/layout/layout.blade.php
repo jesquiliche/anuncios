@@ -671,7 +671,10 @@ padding: 10px
                         <a  href="">Publicar anuncio</a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a href="">Iniciar sesión</a>
+                        <a  href="{{route('registro')}}">Registrarse</a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <a  href="{{route('login2')}}">Inicio sesión</a>
                     </li>
 
 

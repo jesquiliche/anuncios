@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
     return view('home');
 });*/
 
-Route::middleware([
+/*Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -30,7 +30,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
+});*/
+
 
 //Route::get('anuncios/{id}', 'AnuncioController@show')->name('anuncios.show');
 Route::put('anuncios/{id}', [AnuncioController::class,'update'])->name('anuncios.update');
@@ -41,3 +42,9 @@ Route::get('anuncios/{id}', [AnuncioController::class,'show'])->name('anuncios.s
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::post('/anunciosFilter', [HomeController::class,'anunciosFilter'])->name('home.filter');
 Route::post('/anunciosFilterMultiple', [HomeController::class,'anunciosFilterMultiple'])->name('home.filterMultiple');
+Route::get('/auth/register', function () {
+    return view('auth.register');
+})->name('registro');
+Route::get('/auth/login', function () {
+    return view('auth.login');
+})->name('login2');
