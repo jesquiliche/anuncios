@@ -654,7 +654,8 @@
 </head>
 <main>
 
-    <div class="card2 container-fluid fixed-top bg-white">
+    <div class="card3 container-fluid fixed-top bg-white">
+        <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-white ">
             <a class="navbar-brand" href="/">
                 <img src="/images/logo.png" width="60" alt="..." loading="lazy">
@@ -672,7 +673,7 @@
                     </li>
 
                     <li class="nav-item ml-2 dropdown">
-                        <a class="nav-item dropdown-toggle ml-3" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-item dropdown-toggle ml-2" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-plus"></i>
                             @if (!auth()->check())
@@ -708,14 +709,15 @@
                     </li>
 
 
-                    <li class="nav-item ml-3">
-                        <a href="">Publicar anuncio</a>
+                    <li class="nav-item ml-2">
+                        <a href=""><i class="far fa-file-alt"></i> Publicar anuncio</a>
                     </li>
 
                 </ul>
 
             </div>
         </nav>
+        </div>
 
     </div>
 
