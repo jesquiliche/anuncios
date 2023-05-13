@@ -199,21 +199,24 @@
         }
 
         .zoom {
-  transition: transform .2s; /* Propiedad que indica la duración de la transición */
-}
+            transition: transform .2s;
+            /* Propiedad que indica la duración de la transición */
+        }
 
-.zoom:hover {
-  transform: scale(1.2); /* Propiedad que aumenta el tamaño de la imagen */
-}
+        .zoom:hover {
+            transform: scale(1.2);
+            /* Propiedad que aumenta el tamaño de la imagen */
+        }
 
         .carousel-caption {
             font-style: italic;
-            font-size:25px;
+            font-size: 25px;
 
             text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-color: whitesmoke;
-padding: 10px
+            color: whitesmoke;
+            padding: 10px
         }
+
         .py-4 {
             padding-top: 1rem;
             padding-bottom: 1rem
@@ -430,7 +433,7 @@ padding: 10px
             border-radius: 8px;
             font-style: bold;
 
-        
+
         }
 
         .btn-danger {
@@ -667,18 +670,48 @@ padding: 10px
                         <a class="nav-item" href="{{ route('home') }}"><i class="fas fa-home"></i> Home<span
                                 class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item ml-3">
-                        <a  href="">Publicar anuncio</a>
-                    </li>
-                    <li class="nav-item ml-3">
-                        <a  href="{{route('registro')}}">Registrarse</a>
-                    </li>
-                    <li class="nav-item ml-3">
-                        <a  href="{{route('login2')}}">Inicio sesión</a>
+
+                    <li class="nav-item ml-2 dropdown">
+                        <a class="nav-item dropdown-toggle ml-3" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-plus"></i>
+                            @if (!auth()->check())
+                            @else
+                                {{ auth()->user()->name }}
+                            @endif
+
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('registro') }}">Registro</a>
+                            @if (!auth()->check())
+                                <a class="dropdown-item" href="{{ route('login2') }}">Iniciar sesión</a>
+                            @endif
+
+                            @can('admin.home')
+                                <a class="dropdown-item" href={{ route('admin.home') }}>Administración</a>
+                            @endcan
+                            <div class="dropdown-divider"></div>
+                            @if (auth()->check())
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+
+                                <a class="dropdown-item " href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                            @endif
+
+                        </div>
                     </li>
 
 
+                    <li class="nav-item ml-3">
+                        <a href="">Publicar anuncio</a>
                     </li>
+
                 </ul>
 
             </div>
