@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
+use App\Models\Categoria;
 use App\Models\Estado;
+use App\Models\Subcategoria;
+use App\Models\Provincia;
+use App\Models\Poblacion;
 use Illuminate\Http\Request;
 
 class AnuncioController extends Controller
@@ -24,12 +28,18 @@ class AnuncioController extends Controller
     public function showByCategory($id)
     {
         $anuncios = Anuncio::wwhere('subcategoria_id', $id)->get();
+    
         return view('anuncios.showByCategory', compact('anuncios'));
     }
 
     public function create()
     {
-        return view('anuncios.create');
+        $subcategorias=Subcategoria::all();
+        $categorias=Categoria::all();
+        $estados=Estado::all();
+        $provincias=Provincia::orderby('nombre')->get();
+        $poblaciones=Poblacion::orderBy('nombre')->get();
+        return view('anuncios.create',compact('subcategorias','categorias','estados','provincias','poblaciones'));
     }
 
     public function store(Request $request)

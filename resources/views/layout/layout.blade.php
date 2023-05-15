@@ -710,7 +710,7 @@
 
 
                     <li class="nav-item ml-2">
-                        <a href=""><i class="far fa-file-alt"></i> Publicar anuncio</a>
+                        <a href="{{route('anuncios.create')}}"><i class="far fa-file-alt"></i> Publicar anuncio</a>
                     </li>
 
                 </ul>

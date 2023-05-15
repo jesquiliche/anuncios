@@ -42,6 +42,7 @@ Route::get('anuncios/{id}', [AnuncioController::class,'show'])->name('anuncios.s
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::post('/anunciosFilter', [HomeController::class,'anunciosFilter'])->name('home.filter');
 Route::post('/anunciosFilterMultiple', [HomeController::class,'anunciosFilterMultiple'])->name('home.filterMultiple');
+Route::get('/create', [AnuncioController::class,'create'])->name('anuncios.create');
 Route::get('/auth/register', function () {
     return view('auth.register');
 })->name('registro');
