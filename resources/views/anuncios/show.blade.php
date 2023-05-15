@@ -2,18 +2,8 @@
 
 @section('title', 'Página de inicio')
 
-
-
-
-
 @section('content')
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <section class="container mt-2 ">
+       <section class="container mt-8 ">
         <div class="card col-lg-10 mx-auto">
 
             <div class="card-header m-1">

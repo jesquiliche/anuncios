@@ -2,28 +2,11 @@
 
 @section('title', 'Página de inicio')
 
-@section('estilos')
-    <style>
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-
-
-            color: black;
-        }
-    </style>
-@endsection
-
-
 
 
 @section('content')
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <section class="container mt-2 ">
+  
+    <section class="container mt-8 ">
 
 
         <div class="container mt-3 col-lg-12 mx-auto">

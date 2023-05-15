@@ -17,11 +17,8 @@
 
 
 @section('content')
-    <br />
-    <br />
-    <br />
-    <br />
-    <section class="container mt-2 ">
+   
+    <section class="container mt-8 ">
         <div class="card2 col-lg-12 py-2 mx-auto">
 
             <h4 class="text-center m-5"><b class="resaltado">¿Qué quieres encontrar?</b></h4>
@@ -59,7 +56,7 @@
         </form>
 
         <div class="container mt-3 col-lg-12">
-            <h3 class="text-center"><b>Categorías</b></h3>
+            <h4 class="text-center resaltado"><b>Categorías</b></h4>
             <div id="carouselExample" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     @foreach ($categorias->chunk(4) as $categoriasChunk)
@@ -91,7 +88,7 @@
             </div>
 
             <div class="container-fluid mt-3 col-lg-12 mx-auto">
-                <h3 class="text-center"><b>Anuncios</b></h3>
+                <h4 class="text-center resaltado"><b>Anuncios</b></h4>
                 <div class="row">
                     @foreach ($anuncios as $anuncio)
                         <div class="card3 col-lg-4 mx-auto">

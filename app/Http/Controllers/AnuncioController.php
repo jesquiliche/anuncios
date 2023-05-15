@@ -9,6 +9,8 @@ use App\Models\Subcategoria;
 use App\Models\Provincia;
 use App\Models\Poblacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class AnuncioController extends Controller
 {
@@ -37,7 +39,10 @@ class AnuncioController extends Controller
         $subcategorias=Subcategoria::all();
         $categorias=Categoria::all();
         $estados=Estado::all();
-        $provincias=Provincia::orderby('nombre')->get();
+        $provincias = Provincia::all();
+
+
+    
         $poblaciones=Poblacion::orderBy('nombre')->get();
         return view('anuncios.create',compact('subcategorias','categorias','estados','provincias','poblaciones'));
     }

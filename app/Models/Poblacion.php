@@ -23,7 +23,7 @@ class Poblacion extends Model
 
     public function provincia()
     {
-        return $this->belongsTo(Provincia::class);
+        return $this->belongsTo(Provincia::class,'codigo');
     }
 
     public function anuncios()

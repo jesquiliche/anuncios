@@ -14,4 +14,9 @@ class Provincia extends Model
     public $incrementing = false;
 
     protected $fillable = ['codigo', 'nombre'];
+
+    public function poblaciones()
+    {
+        return $this->hasMany(Poblacion::class, 'codigo', 'provincia_cod');
+    }
 }

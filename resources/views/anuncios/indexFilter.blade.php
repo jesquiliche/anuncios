@@ -17,17 +17,13 @@
 
 
 @section('content')
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="container-fluid col-lg-12">
-        <h3 class="text-center"><b>Anuncios</b></h3>
+   
+    <div class="container-fluid col-lg-12 mt-8">
+        
         <div class="row">
 
             <div class="card2 col-lg-3 mx-auto">
-                <h5 class="text-center mt-2 mx-auto"><b>Filtro</b></h>
+                <h4 class="text-center mx-auto resaltado"><b>Filtro</b></h4>
                     <div class="container mt-4">
                         <form action="{{route('home.filterMultiple')}}" method="POST">
                             @csrf
@@ -118,7 +114,7 @@
 
             </div>
             <div class="card3 col-lg-8 mx-auto ">
-
+                <h4 class="text-center resaltado"><b>Anuncios</b></h4>
                 <div class="row ">
                     @foreach ($anuncios as $anuncio)
                         <div class="container col-lg-4 mx-auto my-1">
