@@ -52,7 +52,7 @@ class AnuncioController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:255',
             'description' => 'required|string',
-            'imagen' => 'nullable|image|max:2048',
+            'imagen' => 'required|image|max:2048',
             'precio' => 'required|numeric',
             'subcategoria_id' => 'required|exists:subcategorias,id',
             'provincia' => 'required|string|max:255',

@@ -50,3 +50,7 @@ Route::get('/auth/register', function () {
 Route::get('/auth/login', function () {
     return view('auth.login');
 })->name('login2');
+
+route::post('upload',function(){
+    return "subido";})->name('upload');
+

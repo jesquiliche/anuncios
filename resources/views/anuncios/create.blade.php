@@ -3,6 +3,8 @@
 @section('title', 'Página de inicio')
 
 
+
+
 @section('content')
 
 
@@ -10,7 +12,7 @@
 
     <div class="card2 col-lg-10 mx-auto mt-8 p-4">
         <h4 class="text-center resaltado"><b>Publicar anuncio<b></h4>
-            @if($errors->any())
+        @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -19,7 +21,7 @@
                 </ul>
             </div>
         @endif
-            
+
         {!! Form::open(['url' => route('anuncios.store'), 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         {!! Form::token() !!}
         <div class="row">
@@ -40,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('imagen', 'Imagen') !!}
-                    {!! Form::file('imagen', ['class' => 'form-control-file']) !!}
+                    {!! Form::file('imagen', ['class' => 'form-control-file', 'accept' => 'image/*', 'required', 'max' => '2048']) !!}
                     @error('imagen')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -59,7 +61,9 @@
                     @enderror
                 </div>
             </div>
+            
             <div class="col-lg-6">
+                
                 <div class="form-group">
                     {!! Form::label('telefono', 'Teléfono') !!}
                     {!! Form::tel('telefono', null, ['class' => 'form-control']) !!}
@@ -98,7 +102,7 @@
 
                 <div class="form-group">
                     {!! Form::label('precio', 'Precio') !!}
-                    {!! Form::number('precio', null, ['class' => 'form-control']) !!}
+                    {!! Form::number('precio', null, ['class' => 'form-control','required']) !!}
                     @error('precio')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -107,9 +111,14 @@
         </div>
         <div class="form-group">
             {!! Form::submit('Guardar', ['class' => 'btn btn-danger mx-auto']) !!}
-           
+
         </div>
         {!! Form::close() !!}
     </div>
-    </div>
+    <div class="form-group">
+        <div class="form-group">
+            <div id="myDropzone" class="dropzone"></div>
+        </div>
+    </div>    </div>
 @endsection
+

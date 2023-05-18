@@ -36,7 +36,7 @@
     <!-- Incluye los estilos personalizados -->
     <link rel="stylesheet" href="{{ asset('css/anuncios.css') }}">
 
-    @yield('estilos')
+    @yield('css')
     <!-- Incluye estilos específicos de la vista actual -->
 </head>
 <main>
@@ -112,8 +112,8 @@
 
     @yield('content')
     <!-- Contenido específico de cada vista -->
-
-    <!-- Footer -->
+    
+    @yield('js')
     <footer>
         <div class="container-fluid text-center mt-5 bg-dark">
             <h6 class="text-white mt-4">Copyrigth &copy; Jesús Quintana Esquiliche
@@ -121,6 +121,8 @@
             
         </div>
     </footer>
+    
+
 </main>
 
 </html>

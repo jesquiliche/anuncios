@@ -26,10 +26,38 @@
 
 
                 </div>
-
+                <div class="form-group">
+                    <h4 class="text-center resaltado">¿Desea incluir más imagenes?</h4>
+                    <form action="{{ route('upload') }}" class="dropzone" id="myDropzone">
+                        @csrf
+                    </form>
+                </div>
             </div>
 
         </div>
 
     </section>
+@endsection
+
+@section('css')
+    <!-- Estilos de la vista-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css" integrity="sha512-..." crossorigin="anonymous" />
+@endsection
+
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js" integrity="sha512-..." crossorigin="anonymous"></script>
+    <script>
+        Dropzone.options.myDropzone = {
+            paramName: 'imagen',
+            maxFilesize: 2, // Tamaño máximo del archivo en megabytes
+            acceptedFiles: '.jpg, .jpeg, .png', // Tipos de archivo aceptados
+            dictDefaultMessage: 'Arrastra los archivos aquí para subirlos',
+            maxFiles: 6, // Límite máximo de archivos
+            init: function () {
+                this.on('error', function (file, errorMessage) {
+                    // Manejar errores de carga de archivos aquí
+                });
+            },
+        };
+    </script>
 @endsection
