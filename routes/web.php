@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AnuncioController;
 use App\Http\Controllers\HomeController;
-
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('anuncios/{id}', 'AnuncioController@show')->name('anuncios.show');
 Route::put('anuncios/{id}', [AnuncioController::class,'update'])->name('anuncios.update');
+Route::post('anuncios/store', [AnuncioController::class,'store'])->name('anuncios.store');
 Route::get('anuncios/categoria/{id}', [AnuncioController::class,'showByCategory'])->name('anuncios.categoria');
 Route::get('anuncios/', [AnuncioController::class,'index'])->name('anuncios.index');
 Route::get('anuncios/{id}', [AnuncioController::class,'show'])->name('anuncios.show');
@@ -42,7 +43,7 @@ Route::get('anuncios/{id}', [AnuncioController::class,'show'])->name('anuncios.s
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::post('/anunciosFilter', [HomeController::class,'anunciosFilter'])->name('home.filter');
 Route::post('/anunciosFilterMultiple', [HomeController::class,'anunciosFilterMultiple'])->name('home.filterMultiple');
-Route::get('/create', [AnuncioController::class,'create'])->name('anuncios.create');
+Route::get('/create', [AnuncioController::class,'create'])->middleware('auth')->name('anuncios.create');
 Route::get('/auth/register', function () {
     return view('auth.register');
 })->name('registro');

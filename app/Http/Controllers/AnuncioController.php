@@ -9,7 +9,7 @@ use App\Models\Subcategoria;
 use App\Models\Provincia;
 use App\Models\Poblacion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class AnuncioController extends Controller
@@ -23,28 +23,28 @@ class AnuncioController extends Controller
     public function show($id)
     {
         $anuncio = Anuncio::findOrFail($id);
-        
+
         return view('anuncios.show', compact('anuncio'));
     }
 
     public function showByCategory($id)
     {
         $anuncios = Anuncio::wwhere('subcategoria_id', $id)->get();
-    
+
         return view('anuncios.showByCategory', compact('anuncios'));
     }
 
     public function create()
     {
-        $subcategorias=Subcategoria::all();
-        $categorias=Categoria::all();
-        $estados=Estado::all();
+        $subcategorias = Subcategoria::all();
+        $categorias = Categoria::all();
+        $estados = Estado::all();
         $provincias = Provincia::all();
 
 
-    
-        $poblaciones=Poblacion::orderBy('nombre')->get();
-        return view('anuncios.create',compact('subcategorias','categorias','estados','provincias','poblaciones'));
+
+        $poblaciones = Poblacion::orderBy('nombre')->get();
+        return view('anuncios.create', compact('subcategorias', 'categorias', 'estados', 'provincias', 'poblaciones'));
     }
 
     public function store(Request $request)
@@ -53,14 +53,17 @@ class AnuncioController extends Controller
             'titulo' => 'required|string|max:255',
             'description' => 'required|string',
             'imagen' => 'nullable|image|max:2048',
-            'precio' => 'nullable|numeric',
+            'precio' => 'required|numeric',
             'subcategoria_id' => 'required|exists:subcategorias,id',
             'provincia' => 'required|string|max:255',
-            'telefono'=>'required|string|max:255',
-            'codprovincia' => 'required|string|max:255',
+            'telefono' => 'required|string|max:255',
+            'estado_id'=>'required'
         ]);
 
+        $userId = Auth::id(); // Obtener el ID del usuario autenticado
+
         $anuncio = new Anuncio($request->all());
+        $anuncio->user_id = $userId; // Asignar el ID del usuario al anuncio
 
         if ($request->hasFile('imagen')) {
             $path = $request->file('imagen')->store('public/images');
@@ -69,7 +72,7 @@ class AnuncioController extends Controller
 
         $anuncio->save();
 
-     //   return redirect()->route('anuncios.show', $anuncio->id);
+       return redirect()->route('home', $anuncio->id);
     }
 
     public function edit($id)
@@ -88,7 +91,7 @@ class AnuncioController extends Controller
             'subcategoria_id' => 'required|exists:subcategorias,id',
             'provincia' => 'required|string|max:255',
             'codprovincia' => 'required|string|max:255',
-            'telefono'=>'required|string',
+            'telefono' => 'required|string',
         ]);
 
         $anuncio = Anuncio::findOrFail($id);
@@ -102,7 +105,7 @@ class AnuncioController extends Controller
 
         $anuncio->save();
 
-       // return redirect()->route('anuncios.show', $anuncio->id);
+        return redirect()->route('home');
     }
 
     public function destroy($id)

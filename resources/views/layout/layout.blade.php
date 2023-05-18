@@ -116,12 +116,9 @@
     <!-- Footer -->
     <footer>
         <div class="container-fluid text-center mt-5 bg-dark">
-            <h5 class="text-gray-300">Copyrigth Jesús Quintana Esquiliche</h5>
-            <ul class="social-icons">
-                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
+            <h6 class="text-white mt-4">Copyrigth &copy; Jesús Quintana Esquiliche
+            </h6>
+            
         </div>
     </footer>
 </main>
