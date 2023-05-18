@@ -66,13 +66,14 @@ class AnuncioController extends Controller
         $anuncio->user_id = $userId; // Asignar el ID del usuario al anuncio
 
         if ($request->hasFile('imagen')) {
-            $path = $request->file('imagen')->store('public/images');
-            $anuncio->imagen = $path;
+            $path = $request->file('imagen')->store('/public/images');
+            $url = '/storage/images/' . basename($path);
+            $anuncio->imagen = $url;
         }
 
         $anuncio->save();
 
-       return redirect()->route('home', $anuncio->id);
+       return redirect()->route('anuncios.show', $anuncio->id);
     }
 
     public function edit($id)
