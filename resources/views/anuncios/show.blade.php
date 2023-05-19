@@ -19,21 +19,21 @@
                     <h5>{{ $anuncio->description }}</h5>
                 </div>
                 <img src="{{ $anuncio->imagen }}" class="d-block w-100" alt="{{ $anuncio->titulo }}">
-                <div class="card3 mx-auto">
+                <div class="card3 mx-auto mt-1">
                     <div class="row">
-                        
+
                         @foreach ($anuncio->fotos as $foto)
-                        <div class="card3 col-lg-4 mx-auto">
-                            <img src="{{ $foto->path }}" alt="Foto del anuncio" width="150px" class="zoom">
-                        </div>
-                            @endforeach
+                            <div class="card3 col-lg-3 mx-auto mt-3">
+                                <img src="{{ $foto->path }}" alt="Foto del anuncio" width="180px" class="zoom">
+                            </div>
+                        @endforeach
                     </div>
-        
+
                 </div>
-               
+
             </div>
-           
+
         </div>
-      
+
     </section>
 @endsection

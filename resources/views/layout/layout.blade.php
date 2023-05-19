@@ -115,9 +115,14 @@
     
     @yield('js')
     <footer>
-        <div class="container-fluid text-center mt-5 bg-dark">
-            <h6 class="text-white mt-4">Copyrigth &copy; Jesús Quintana Esquiliche
+        <div class="container-fluid text-center mt-4 bg-dark">
+            <div class="container mx-auto bg-dark">
+                <br/>
+            <h6 class="text-white text-center mt-4">Copyrigth &copy; Jesús Quintana Esquiliche
+                
             </h6>
+            <br/>
+            </div>
             
         </div>
     </footer>

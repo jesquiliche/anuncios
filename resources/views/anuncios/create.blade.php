@@ -115,10 +115,6 @@
         </div>
         {!! Form::close() !!}
     </div>
-    <div class="form-group">
-        <div class="form-group">
-            <div id="myDropzone" class="dropzone"></div>
-        </div>
-    </div>    </div>
+</div>
 @endsection
 
