@@ -73,7 +73,7 @@ class AnuncioController extends Controller
 
         $anuncio->save();
 
-       return redirect()->route('anuncios.show', $anuncio->id);
+       return view('anuncios.showCreateFotos', compact('anuncio'));
     }
 
     public function edit($id)

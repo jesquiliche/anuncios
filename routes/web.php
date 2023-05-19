@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AnuncioController;
 use App\Http\Controllers\HomeController;
-use GuzzleHttp\Middleware;
+use App\http\Controllers\FotoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +44,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::post('/anunciosFilter', [HomeController::class,'anunciosFilter'])->name('home.filter');
 Route::post('/anunciosFilterMultiple', [HomeController::class,'anunciosFilterMultiple'])->name('home.filterMultiple');
 Route::get('/create', [AnuncioController::class,'create'])->middleware('auth')->name('anuncios.create');
+
 Route::get('/auth/register', function () {
     return view('auth.register');
 })->name('registro');
@@ -51,6 +52,6 @@ Route::get('/auth/login', function () {
     return view('auth.login');
 })->name('login2');
 
-route::post('upload',function(){
-    return "subido";})->name('upload');
+Route::post('/fotos', [FotoController::class, 'store'])->name('fotos.store');
+
 

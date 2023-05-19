@@ -26,13 +26,23 @@ class FotoController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'path' => 'required',
-            'anuncio_id' => 'required|exists:anuncios,id'
+        // Validar la solicitud
+       $request->validate([
+            'imagen' => 'required|image|max:2048',// Reemplaza las reglas de validación según tus necesidades
+            'anuncio_id'=>'required'
         ]);
 
-        Foto::create($data);
-        return redirect()->route('fotos.index');
+        // Obtener el archivo de imagen
+        $imagen = $request->file('imagen');
+
+        // Procesar y guardar la imagen
+        $ruta = $imagen->store('public/images'); // Guarda la imagen en una carpeta específica, ajusta la ruta según tus necesidades
+        $url = '/storage/images/' . basename($ruta);
+        // Crear una nueva instancia de Foto y guardarla en la base de datos
+        $foto = Foto::create([
+            'path' => $url,
+            'anuncio_id' => $request->anuncio_id,
+        ]);
     }
 
     public function edit($id)

@@ -9,4 +9,8 @@ class Foto extends Model
 {
     use HasFactory;
     protected $fillable = ['path','anuncio_id'];
+
+    public function anuncios(){
+        return $this->belongsTo(Anuncio::class,'id');
+    }
 }

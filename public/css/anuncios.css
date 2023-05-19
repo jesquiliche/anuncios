@@ -73,13 +73,17 @@ a {
 }
 
 .zoom {
-    transition: transform 0.2s;
+    transition: transform 0.3s;
     /* Propiedad que indica la duración de la transición */
+    position: relative;
+    /* Asegura que la imagen tenga una posición relativa o absoluta */
 }
 
 .zoom:hover {
-    transform: scale(1.2);
+    transform: scale(3.5);
     /* Propiedad que aumenta el tamaño de la imagen */
+    z-index: 1;
+    /* Asegura que la imagen seleccionada se superponga a las demás */
 }
 
 .carousel-caption {
