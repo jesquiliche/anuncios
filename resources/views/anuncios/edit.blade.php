@@ -16,7 +16,11 @@
             </div>
         @endif
 
-        {!! Form::open(['route' => ['anuncios.update', $anuncio->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open([
+            'route' => ['anuncios.update', $anuncio->id],
+            'method' => 'PUT',
+            'enctype' => 'multipart/form-data',
+        ]) !!}
         {!! Form::token() !!}
         <div class="row">
             <div class="col-lg-6">
@@ -27,11 +31,17 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-               
+
                 <div class="form-group">
-                    <img id="preview-image" src="{{ $anuncio->imagen }}" class="d-block col-lg-12" alt="{{ $anuncio->titulo }}">
+                    <img id="preview-image" src="{{ $anuncio->imagen }}" class="d-block col-lg-10"
+                        alt="{{ $anuncio->titulo }}">
                     {!! Form::label('imagen', 'Imagen') !!}
-                    {!! Form::file('imagen', ['class' => 'form-control-file', 'accept' => 'image/*', 'max' => '2048','id' => 'image-input']) !!}
+                    {!! Form::file('imagen', [
+                        'class' => 'form-control-file',
+                        'accept' => 'image/*',
+                        'max' => '2048',
+                        'id' => 'image-input',
+                    ]) !!}
                     @error('imagen')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -52,14 +62,17 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('estado_id', 'Estado') !!}
-                    {!! Form::select('estado_id', $estados->pluck('nombre', 'id'), $anuncio->id, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::select('estado_id', $estados->pluck('nombre', 'id'), $anuncio->id, [
+                        'class' => 'form-control',
+                        'required',
+                    ]) !!}
                     @error('estado_id')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                
+
             </div>
-            
+
             <div class="col-lg-6">
                 <div class="form-group">
                     {!! Form::label('description', 'Descripción') !!}
@@ -70,15 +83,15 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('telefono', 'Teléfono') !!}
-                    {!! Form::tel('telefono', $anuncio->telefono, ['class' => 'form-control','required']) !!}
+                    {!! Form::tel('telefono', $anuncio->telefono, ['class' => 'form-control', 'required']) !!}
                     @error('telefono')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-               
+
                 <div class="form-group">
                     {!! Form::label('provincia', 'Provincia') !!}
-                    {!! Form::select('provincia', $provincias->pluck('nombre', 'codigo'),$anuncio->provincia, [
+                    {!! Form::select('provincia', $provincias->pluck('nombre', 'codigo'), $anuncio->provincia, [
                         'class' => 'form-control',
                         'required',
                     ]) !!}
@@ -100,43 +113,56 @@
 
                 <div class="form-group">
                     {!! Form::label('precio', 'Precio') !!}
-                    {!! Form::number('precio',$anuncio->precio, ['class' => 'form-control','required']) !!}
+                    {!! Form::number('precio', $anuncio->precio, ['class' => 'form-control', 'required']) !!}
                     @error('precio')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-            </div>
+                <div class="form-group">
+                    {!! Form::submit('Actualizar', ['class' => 'btn btn-danger mx-auto']) !!}
+                    {!! Form::close() !!}
+                </div>
+               
         </div>
         <div class="card3 mx-auto mt-1">
             <div class="row">
-
+            
                 @foreach ($anuncio->fotos as $foto)
                     <div class="card3 col-lg-3 mx-auto mt-3">
-                        <img src="{{ $foto->path }}" alt="Foto del anuncio" width="180px" class="zoom">
+                        <img src="{{ $foto->path }}" alt="Foto del anuncio" width="180px" class="zoom mx-auto">
+                        <div class="text-center">
+                            <form action="{{ route('fotos.destroy', ['id' => $foto->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger  ml-6 btn-block">Borrar</button>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
+
+
+    </div>
+
             </div>
 
         </div>
 
-        <div class="form-group">
-            {!! Form::submit('Actualizar', ['class' => 'btn btn-danger mx-auto']) !!}
-
-        </div>
-        {!! Form::close() !!}
+        
+        
+       
     </div>
-</div>
+    </div>
 
 @endsection
 
 @section('js')
-<script>
-    document.getElementById('image-input').addEventListener('change', function(e) {
-        var reader = new FileReader();
-        reader.onload = function(event) {
-            document.getElementById('preview-image').src = event.target.result;
-        }
-        reader.readAsDataURL(e.target.files[0]);
-    });
-</script>
+    <script>
+        document.getElementById('image-input').addEventListener('change', function(e) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById('preview-image').src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        });
+    </script>
 @endsection

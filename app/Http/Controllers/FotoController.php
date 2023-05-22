@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Foto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 class FotoController extends Controller
 {
@@ -64,9 +66,19 @@ class FotoController extends Controller
     }
 
     public function destroy($id)
-    {
-        $foto = Foto::findOrFail($id);
-        $foto->delete();
-        return redirect()->route('fotos.index');
+{
+    $foto = Foto::find($id); // Obtener el objeto Foto por su ID
+    
+    if ($foto) {
+        $foto->delete(); // Eliminar la foto
+        
+        // También puedes eliminar el archivo de imagen físicamente si lo deseas
+        unlink(public_path($foto->path));
+        return redirect()->back();
+        
+        // Realizar otras acciones o redirigir según tus necesidades
+    } else {
+        // La foto no existe, manejar el error o mostrar un mensaje al usuario
     }
+}
 }

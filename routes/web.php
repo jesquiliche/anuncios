@@ -54,5 +54,8 @@ Route::get('/auth/login', function () {
 })->name('login2');
 
 Route::post('/fotos', [FotoController::class, 'store'])->name('fotos.store');
+Route::delete('foto/{id}', [FotoController::class, 'destroy'])->name('fotos.destroy');
+
+
 
 
