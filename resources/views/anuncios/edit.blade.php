@@ -31,7 +31,6 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-
                 <div class="form-group">
                     <img id="preview-image" src="{{ $anuncio->imagen }}" class="d-block col-lg-10"
                         alt="{{ $anuncio->titulo }}">
@@ -70,9 +69,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-
             </div>
-
             <div class="col-lg-6">
                 <div class="form-group">
                     {!! Form::label('description', 'Descripción') !!}
@@ -122,37 +119,44 @@
                     {!! Form::submit('Actualizar', ['class' => 'btn btn-danger mx-auto']) !!}
                     {!! Form::close() !!}
                 </div>
-               
-        </div>
-        <div class="card3 mx-auto mt-1">
-            <div class="row">
-            
-                @foreach ($anuncio->fotos as $foto)
-                    <div class="card3 col-lg-3 mx-auto mt-3">
-                        <img src="{{ $foto->path }}" alt="Foto del anuncio" width="180px" class="zoom mx-auto">
-                        <div class="text-center">
-                            <form action="{{ route('fotos.destroy', ['id' => $foto->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger  ml-6 btn-block">Borrar</button>
-                            </form>
-                        </div>
-                    </div>
-                @endforeach
-
-
-    </div>
 
             </div>
+            </div>
+            <div class="card3 mx-auto mt-1">
+                <div class="row">
+                    @foreach ($anuncio->fotos as $foto)
+                        <div class="card3 col-lg-3 mx-auto mt-3">
+                            <img src="{{ $foto->path }}" alt="Foto del anuncio" width="180px" class="zoom mx-auto">
+                            <div class="text-center">
+                                <form action="{{ route('fotos.destroy', ['id' => $foto->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mt-2 ml-6 btn-block">Borrar</button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="form-group">
+                    <h4 class="text-center resaltado mt-4">¿Desea incluir más imágenes?</h4>
+                    <!-- DropZone -->
+                    <form action="{{ route('fotos.store') }}" method="POST" enctype="multipart/form-data" class="dropzone"
+                        id="myDropzone">
+                        @csrf
+                        <input type="hidden" name="anuncio_id" value="{{ $anuncio->id }}">
+                    </form>
+                </div>
+
 
         </div>
-
-        
-        
-       
     </div>
-    </div>
+@endsection
 
+
+@section('css')
+    <!-- Estilos de la vista-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css"
+        crossorigin="anonymous" />
 @endsection
 
 @section('js')
@@ -165,4 +169,20 @@
             reader.readAsDataURL(e.target.files[0]);
         });
     </script>
+      <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+      <script>
+          Dropzone.options.myDropzone = {
+              paramName: 'imagen',
+              maxFilesize: 2, <!-- Tamaño máximo del archivo en megabytes -->
+              acceptedFiles: '.jpg, .jpeg, .png', <!-- Tipos de archivo aceptados -->
+              dictDefaultMessage: 'Arrastra los archivos aquí para subirlos',
+              maxFiles: 6, <!-- Límite máximo de archivos -->
+              init: function() {
+                  this.on('error', function(file, errorMessage) {
+                      // Manejar errores de carga de archivos aquí
+                  });
+              },
+          };
+      </script>
+  
 @endsection
