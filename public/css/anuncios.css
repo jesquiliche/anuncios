@@ -22,9 +22,19 @@ a {
     border-radius: 15px;
 }
 
-.btn-danger {
+.btn-danger,.btn-outline-danger {
     background-color: rgb(130, 212, 130);
     border-color: rgb(130, 212, 130);
+}
+
+.btn-outline-danger:hover {
+    background-color: rgb(79, 137, 79);
+    border-color: rgb(79, 137, 79);
+}
+.btn-outline-danger:active {
+    border-radius: 5px;
+    background-color: rgb(79, 137, 79);
+    border-color: rgb(79, 137, 79);
 }
 
 .btn-danger:hover {
@@ -80,7 +90,7 @@ a {
 }
 
 .zoom:hover {
-    transform: scale(3.5);
+    transform: scale(3);
     /* Propiedad que aumenta el tamaño de la imagen */
     z-index: 1;
     /* Asegura que la imagen seleccionada se superponga a las demás */

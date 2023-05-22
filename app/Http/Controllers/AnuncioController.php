@@ -78,8 +78,15 @@ class AnuncioController extends Controller
 
     public function edit($id)
     {
+        $subcategorias = Subcategoria::all();
+        $categorias = Categoria::all();
+        $estados = Estado::all();
+        $provincias = Provincia::all();
+        $poblaciones = Poblacion::orderBy('nombre')->get();
         $anuncio = Anuncio::findOrFail($id);
-        return view('anuncios.edit', compact('anuncio'));
+        
+        return view('anuncios.edit', compact('anuncio',
+            'categorias','estados','provincias','poblaciones'));
     }
 
     public function update(Request $request, $id)
@@ -91,7 +98,6 @@ class AnuncioController extends Controller
             'precio' => 'nullable|numeric',
             'subcategoria_id' => 'required|exists:subcategorias,id',
             'provincia' => 'required|string|max:255',
-            'codprovincia' => 'required|string|max:255',
             'telefono' => 'required|string',
         ]);
 
@@ -100,8 +106,9 @@ class AnuncioController extends Controller
         $anuncio->fill($request->all());
 
         if ($request->hasFile('imagen')) {
-            $path = $request->file('imagen')->store('public/images');
-            $anuncio->imagen = $path;
+            $path = $request->file('imagen')->store('/public/images');
+            $url = '/storage/images/' . basename($path);
+            $anuncio->imagen = $url;
         }
 
         $anuncio->save();

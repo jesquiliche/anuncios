@@ -48,7 +48,8 @@
                                 <!-- Iteración sobre las categorías del grupo -->
                                 @foreach ($categoriasChunk as $categoria)
                                     <div class="col-sm-6 col-md-4 col-lg-3">
-                                        <img src="{{ $categoria->imagen }}" width="100" height="180" class="d-block w-100" alt="{{ $categoria->nombre }}">
+                                        <img src="{{ $categoria->imagen }}" width="100" height="180"
+                                            class="d-block w-100" alt="{{ $categoria->nombre }}">
                                         <div class="carousel-caption">
                                             <h5>{{ $categoria->nombre }}</h5>
                                         </div>
@@ -86,18 +87,32 @@
                             </a>
                         </div>
                     @endforeach
+                </div>
 
-                    <div class="pagination">
-                        @if ($anuncios->previousPageUrl())
-                            <a href="{{ $anuncios->previousPageUrl() }}" class="btn btn-danger m-1" rel="prev">Anterior</a>
-                        @endif
+                <div class="pagination">
+                    <!-- Mostrar botón "Anterior" si hay una página anterior disponible -->
+                    @if ($anuncios->currentPage() > 1)
+                        <a href="{{ $anuncios->previousPageUrl() }}" class="btn btn-danger m-1" rel="prev">Anterior</a>
+                    @endif
 
-                        @if ($anuncios->nextPageUrl())
-                            <a href="{{ $anuncios->nextPageUrl() }}" class="btn btn-danger m-1" rel="next">Siguiente</a>
+                    <!-- Iteración sobre las páginas disponibles -->
+                    @foreach (range(1, $anuncios->lastPage()) as $page)
+                        <!-- Resaltar la página actual -->
+                        @if ($page == $anuncios->currentPage())
+                            <span class="btn btn-success m-1 active">{{ $page }}</span>
+                        @else
+                            <!-- Mostrar enlace a la página correspondiente -->
+                            <a href="{{ $anuncios->url($page) }}" class=" m-1 mt-2">{{ $page }}</a>
                         @endif
-                    </div>
+                    @endforeach
+
+                    <!-- Mostrar botón "Siguiente" si hay una página siguiente disponible -->
+                    @if ($anuncios->hasMorePages())
+                        <a href="{{ $anuncios->nextPageUrl() }}" class="btn btn-danger m-1" rel="next">Siguiente</a>
+                    @endif
                 </div>
             </div>
+        </div>
         </div>
     </section>
 @endsection

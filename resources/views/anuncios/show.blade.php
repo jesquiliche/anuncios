@@ -5,6 +5,14 @@
 @section('content')
     <section class="container mt-8 ">
         <div class="card col-lg-10 mx-auto">
+            @auth
+                @if (auth()->user()->id == $anuncio->user_id)
+                    <div class="row m-2">
+                        <a href="{{route('anuncios.edit', ['id' => $anuncio->id])}}" class="btn btn-danger  col-sm-2 m-1">Editar</a>
+                        <a href="#" class="btn btn-danger  col-sm-2 m-1">Borrar</a>
+                    </div>
+                @endif
+            @endauth
             <div class="card-header m-1">
                 <h4 class="resaltado text-center"><b>{{ $anuncio->titulo }}</b></h4>
                 <h5 class="text-center">Precio : <b>{{ $anuncio->precio }}</h5>
@@ -28,9 +36,8 @@
                             </div>
                         @endforeach
                     </div>
-
+            
                 </div>
-
             </div>
 
         </div>

@@ -34,7 +34,8 @@ use Illuminate\Support\Facades\Route;
 
 
 //Route::get('anuncios/{id}', 'AnuncioController@show')->name('anuncios.show');
-Route::put('anuncios/{id}', [AnuncioController::class,'update'])->name('anuncios.update');
+Route::get('anuncio/{id}', [AnuncioController::class,'edit'])->name('anuncios.edit');
+Route::put('anuncio/{id}', [AnuncioController::class,'update'])->name('anuncios.update');
 Route::post('anuncios/store', [AnuncioController::class,'store'])->name('anuncios.store');
 Route::get('anuncios/categoria/{id}', [AnuncioController::class,'showByCategory'])->name('anuncios.categoria');
 Route::get('anuncios/', [AnuncioController::class,'index'])->name('anuncios.index');
