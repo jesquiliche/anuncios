@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Foto;
 use App\Models\Anuncio;
 use App\Models\Categoria;
 use App\Models\Estado;
@@ -27,14 +26,12 @@ class AnuncioController extends Controller
     public function show($id)
     {
         $anuncio = Anuncio::findOrFail($id);
-
         return view('anuncios.show', compact('anuncio'));
     }
 
     public function showByCategory($id)
     {
         $anuncios = Anuncio::wwhere('subcategoria_id', $id)->get();
-
         return view('anuncios.showByCategory', compact('anuncios'));
     }
 
@@ -44,15 +41,13 @@ class AnuncioController extends Controller
         $categorias = Categoria::all();
         $estados = Estado::all();
         $provincias = Provincia::all();
-
-
-
         $poblaciones = Poblacion::orderBy('nombre')->get();
         return view('anuncios.create', compact('subcategorias', 'categorias', 'estados', 'provincias', 'poblaciones'));
     }
 
     public function store(Request $request)
     {
+        //Validación de datos del formulario
         $request->validate([
             'titulo' => 'required|string|max:255',
             'description' => 'required|string',
@@ -65,19 +60,23 @@ class AnuncioController extends Controller
         ]);
 
         $userId = Auth::id(); // Obtener el ID del usuario autenticado
-
         $anuncio = new Anuncio($request->all());
         $anuncio->user_id = $userId; // Asignar el ID del usuario al anuncio
 
+        //Si existe imagen en el campo
         if ($request->hasFile('imagen')) {
+            //Guardar imagen en el servidor
             $path = $request->file('imagen')->store('/public/images');
             $url = '/storage/images/' . basename($path);
+            //Guardar imagen en la base de datos
             $anuncio->imagen = $url;
         }
 
         $anuncio->save();
-
-       return view('anuncios.showCreateFotos', compact('anuncio'));
+        
+        //Lamar al formulario de detalle, el cual no permite añadir varias
+        //fotos al anuncio 
+        return view('anuncios.showCreateFotos', compact('anuncio'));
     }
 
     public function edit($id)
@@ -89,12 +88,14 @@ class AnuncioController extends Controller
         $poblaciones = Poblacion::orderBy('nombre')->get();
         $anuncio = Anuncio::findOrFail($id);
         
+        //Llamada al formulario de Edición de anuncios
         return view('anuncios.edit', compact('anuncio',
             'categorias','estados','provincias','poblaciones'));
     }
 
     public function update(Request $request, $id)
     {
+        //Validar datos
         $request->validate([
             'titulo' => 'required|string|max:255',
             'description' => 'required|string',
@@ -109,7 +110,10 @@ class AnuncioController extends Controller
 
         $anuncio->fill($request->all());
 
+        //Guardar la imagen en la Base de Datos por si esta ha cambiado
         if ($request->hasFile('imagen')) {
+            //Borrar fisicamente la imagen anterior
+            unlink(public_path($anuncio->imagen));
             $path = $request->file('imagen')->store('/public/images');
             $url = '/storage/images/' . basename($path);
             $anuncio->imagen = $url;
@@ -127,19 +131,19 @@ class AnuncioController extends Controller
                 $anuncio = Anuncio::findOrFail($id);
                 
                 foreach ($anuncio->fotos as $foto) {
-                    unlink(public_path($foto->path));
+                  //  unlink($foto->path);
                     $foto->delete();
                 }
-                
-                unlink(public_path($foto->path));
+
+                unlink(public_path($anuncio->imagen));
                 $anuncio->delete();
             });
             
             // Si la transacción se completa sin errores, redirecciona a la ruta deseada
             return redirect()->route('home');
         } catch (\Throwable $e) {
+            return $e->getMessage();
             // Manejo de errores en caso de fallo en la transacción
-            return $e;
             return back()->withErrors(['error' => 'Se produjo un error al borrar el anuncio.']);
         }
         

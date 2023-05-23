@@ -9,15 +9,17 @@ body {
     background-color: rgba(240, 240, 232, 0.98);
 }
 
-a {
-    background-color: transparent;
-}
 
 a {
-    color: inherit;
-    text-decoration: inherit;
-}
+    color: black;
+ 
+    text-decoration-color: green; /* Establece el color del subrayado en rojo */
+  }
 
+  a:hover {
+    color:green;
+  }
+  
 .btn {
     border-radius: 15px;
 }
@@ -84,13 +86,15 @@ a {
 
 .zoom {
     transition: transform 0.3s;
+    border-radius: 5px;
     /* Propiedad que indica la duración de la transición */
     position: relative;
     /* Asegura que la imagen tenga una posición relativa o absoluta */
 }
 
 .zoom:hover {
-    transform: scale(3);
+    border-radius: 5px;
+    transform: scale(2.5);
     /* Propiedad que aumenta el tamaño de la imagen */
     z-index: 1;
     /* Asegura que la imagen seleccionada se superponga a las demás */

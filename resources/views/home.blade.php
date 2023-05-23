@@ -49,7 +49,7 @@
                                 @foreach ($categoriasChunk as $categoria)
                                     <div class="col-sm-6 col-md-4 col-lg-3">
                                         <img src="{{ $categoria->imagen }}" width="100" height="180"
-                                            class="d-block w-100" alt="{{ $categoria->nombre }}">
+                                            class="d-block w-100 rounded" alt="{{ $categoria->nombre }}">
                                         <div class="carousel-caption">
                                             <h5>{{ $categoria->nombre }}</h5>
                                         </div>
@@ -75,14 +75,25 @@
                     <!-- Iteración sobre los anuncios -->
                     @foreach ($anuncios as $anuncio)
                         <div class="card3 col-lg-4 mx-auto">
+                            
+
                             <a href="/anuncios/{{ $anuncio->id }}">
+                                
                                 <div class="card-title m-1">
-                                    <p class="resaltado">{{ $anuncio->titulo }}</b></p>
+                                    
+                                    <p class="resaltado">
+                                        @auth
+                                            @if (auth()->user()->id == $anuncio->user_id)
+                                                <i class="fas fa-edit mr-1"></i>
+                                            @endif
+                                        @endauth
+                                        {{ $anuncio->titulo }}</p>
                                 </div>
                                 <div class="card-body m-1">
-                                    precio : <b>{{ $anuncio->precio }}</b>
-                                    <img src="{{ $anuncio->imagen }}" class="d-block w-100" alt="{{ $anuncio->titulo }}">
+                                    
+                                    <img src="{{ $anuncio->imagen }}" class="d-block w-100 rounded" alt="{{ $anuncio->titulo }}">
                                     <p>{{ $anuncio->description }}</p>
+                                    precio : <b>{{ $anuncio->precio ."€"}}</b>
                                 </div>
                             </a>
                         </div>

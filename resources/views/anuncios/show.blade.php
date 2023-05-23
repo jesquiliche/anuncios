@@ -9,24 +9,34 @@
                 @if (auth()->user()->id == $anuncio->user_id)
                     <div class="row m-2">
                         <div class="col-sm-2 mt-1">
-                        <a href="{{route('anuncios.edit', ['id' => $anuncio->id])}}" class="btn btn-danger col-sm-12">Editar</a>
+                            <a href="{{ route('anuncios.edit', ['id' => $anuncio->id]) }}"
+                                class="btn btn-danger col-sm-12">Editar</a>
                         </div>
                         <form action="{{ route('anuncios.delete', ['id' => $anuncio->id]) }}" method="POST" class="col-sm-2">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger col-sm-12 m-1">Borrar</button>
                         </form>
-                                           
+
                     </div>
                 @endif
             @endauth
             <div class="card-header m-1">
                 <h4 class="resaltado text-center"><b>{{ $anuncio->titulo }}</b></h4>
-                <h5 class="text-center">Precio : <b>{{ $anuncio->precio }}</h5>
-                <h5 class="text-center"></b> Estado :
-                    <b>{{ $anuncio->estado->nombre }}</b>
-                    Categoría : <b>{{ $anuncio->subcategoria->categoria->nombre }}</b>
-                    SubCategoría : <b>{{ $anuncio->subcategoria->nombre }}</b>
+
+                <h5>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p></b> Estado :
+                                <b>{{ $anuncio->estado->nombre }}</b>
+                            </p>
+                            <p>Categoría : <b>{{ $anuncio->subcategoria->categoria->nombre }}</b></p>
+                            <p>SubCategoría : <b>{{ $anuncio->subcategoria->nombre }}</b></p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>Precio : <b>{{ $anuncio->precio . '€' }}</b></p>
+                            <p>Teléfono : <b>{{ $anuncio->telefono }}</p>
+                        </div>
                 </h5>
             </div>
             <div class="card-body m-1">
@@ -43,7 +53,7 @@
                             </div>
                         @endforeach
                     </div>
-            
+
                 </div>
             </div>
 

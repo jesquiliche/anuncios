@@ -2,7 +2,7 @@
     {
         "titulo": "Bicicleta de montaña en excelente estado",
         "description": "Vendo una bicicleta de montaña en excelente estado, con muy poco uso. Incluye todos los accesorios necesarios para salir a la montaña.",
-        "imagen": "/images/bicicleta1.jpg",
+        "imagen": "/storage/images/bicicleta1.jpg",
         "user_id": 1,
         "subcategoria_id": 1,
         "telefono": "123456789",
@@ -16,7 +16,7 @@
     {
         "titulo": "Juego de pastillas de freno para Volkswagen Golf",
         "description": "Vendo un juego de pastillas de freno nuevas para Volkswagen Golf, compatibles con modelos desde el 2008 en adelante.",
-        "imagen": "/images/pastillas-de-freno.jpg",
+        "imagen": "/storage/images/pastillas-de-freno.jpg",
         "user_id": 1,
         "subcategoria_id": 3,
         "telefono": "123456789",
@@ -30,7 +30,7 @@
     {
         "titulo": "Vestido de novia usado en perfecto estado",
         "description": "Vendo un vestido de novia usado solamente una vez y en perfecto estado. Talla 38.",
-        "imagen": "/images/novia.jpg",
+        "imagen": "/storage/images/novia.jpg",
         "user_id": 2,
         "subcategoria_id": 8,
         "telefono": "987654321",
@@ -44,7 +44,7 @@
     {
         "titulo": "Piso de alquiler en el centro de la ciudad",
         "description": "Se alquila un piso en el centro de la ciudad, totalmente reformado y amueblado. Dispone de 2 habitaciones y 1 baño.",
-        "imagen": "/images/Piso-playa.jpeg",
+        "imagen": "/storage/images/Piso-playa.jpeg",
         "user_id": 3,
         "subcategoria_id": 9,
         "telefono": "555555555",
@@ -59,7 +59,7 @@
     {
         "titulo": "Bicicleta de montaña",
         "description": "Bicicleta de montaña marca Trek, modelo X-Caliber 8, talla M. Apenas se ha usado, está en perfecto estado. Incluye pedales Shimano PD-M520.",
-        "imagen": "https://picsum.photos/id/237/200/200",
+        "imagen": "/storage/images/bicicleta2.jpg",
         "user_id": 4,
         "subcategoria_id": 4,
         "telefono": "612345678",
@@ -73,7 +73,7 @@
     {
         "titulo": "Casa de campo en Almería",
         "description": "Casa de campo en Almería, a 15 minutos de la playa. Dispone de 3 habitaciones, 2 baños, cocina americana y salón-comedor. Totalmente amueblada y equipada. Ideal para vacaciones en familia.",
-        "imagen": "https://picsum.photos/id/238/200/200",
+        "imagen": "/storage/images/casacampo.jpeg",
         "user_id": 2,
         "subcategoria_id": 10,
         "telefono": "601234567",
@@ -87,7 +87,7 @@
     {
         "titulo": "Habitación en piso compartido",
         "description": "Se alquila habitación en piso compartido en el barrio de Gracia. El piso tiene 4 habitaciones, 1 baño, cocina y salón-comedor. Muy luminoso y acogedor. Ambiente joven y tranquilo.",
-        "imagen": "https://picsum.photos/id/239/200/200",
+        "imagen": "/storage/images/habitacion2.jpg",
         "user_id": 1,
         "subcategoria_id": 11,
         "telefono": "687654321",
@@ -102,7 +102,7 @@
     {
         "titulo": "Amplificador de señal de radio FM",
         "description": "Amplificador de señal de radio FM en perfecto estado, se vende por cambio a otro modelo. Ideal para mejorar la recepción en zonas de baja cobertura.",
-        "imagen": "https://picsum.photos/id/100/400/400",
+        "imagen": "/storage/images/ampli.jpeg",
         "user_id": 6,
         "subcategoria_id": 1,
         "telefono": "555-1234",
@@ -116,7 +116,7 @@
     {
         "titulo": "Llantas para coche",
         "description": "Vendo juego de llantas para coche en buen estado. Marca Original Wheels, modelo GT-30. Medidas 17 pulgadas, 5 tornillos. Se incluyen los cuatro neumáticos con algo de vida útil aún.",
-        "imagen": "https://picsum.photos/id/101/400/400",
+        "imagen": "/storage/images/llantas.webp",
         "user_id": 3,
         "subcategoria_id": 3,
         "telefono": "555-5678",
@@ -126,80 +126,5 @@
         "cod_postal": "08921",
         "created_at": "2023-04-21T13:00:00Z",
         "updated_at": "2023-04-21T13:00:00Z"
-    },
-    {
-        "titulo": "Cortacésped eléctrico",
-        "description": "Cortacésped eléctrico en buen estado. Marca Gardenia, modelo G5-2100. Potencia 2100 W, anchura de corte 40 cm. Incluye cesta recolectora y cable de alimentación. Ideal para jardines de tamaño medio.",
-        "imagen": "https://picsum.photos/id/102/400/400",
-        "user_id": 8,
-        "subcategoria_id": 4,
-        "telefono": "555-9012",
-        "estado_id": 3,
-        "provincia": "CA",
-        "cod_postal": "08921",
-        "created_at": "2023-04-21T14:00:00Z",
-        "updated_at": "2023-04-21T14:00:00Z",
-        "precio": "499.99"
     }
-    ,
-    {
-        "titulo": "Bicicleta de montaña",
-        "description": "Bicicleta de montaña en perfectas condiciones, talla M, con cambios Shimano y frenos de disco hidráulicos",
-        "imagen": "https://picsum.photos/200/300/?random",
-        "user_id": 3,
-        "subcategoria_id": 4,
-        "telefono": "555-555-555",
-        "estado_id": 1,
-        "provincia": "AL",
-        "cod_postal": "08921",
-        "precio": "499.99"
-    },
-    {
-        "titulo": "iPhone 11 Pro",
-        "description": "iPhone 11 Pro de 256GB en color plata, como nuevo, sin arañazos ni golpes. Incluye cargador y auriculares originales",
-        "imagen": "https://picsum.photos/200/300/?random",
-        "user_id": 2,
-        "subcategoria_id": 6,
-        "telefono": "555-555-555",
-        "estado_id": 2,
-        "provincia": "CA",
-        "cod_postal": "08921",
-        "precio": "899.99"
-    },
-    {
-        "titulo": "Furgoneta Mercedes Sprinter",
-        "description": "Furgoneta Mercedes Sprinter en muy buenas condiciones, con motor diésel de 4 cilindros, 5 velocidades y 9 plazas",
-        "imagen": "https://i.imgur.com/etJz23u.jpg",
-        "user_id": 5,
-        "subcategoria_id": 1,
-        "telefono": "555-555-555",
-        "estado_id": 3,
-        "provincia": "TX",
-        "cod_postal": "08921",
-        "precio": "7999.99"
-    },
-    {
-        "titulo": "Máquina de cortar césped",
-        "description": "Máquina de cortar césped eléctrica con potencia de 1800W y anchura de corte de 46cm. En buen estado y con poco uso",
-        "imagen": "https://picsum.photos/200/300/?random",
-        "user_id": 4,
-        "subcategoria_id": 2,
-        "telefono": "555-555-555",
-        "estado_id": 1,
-        "provincia": "NY",
-        "cod_postal": "08921",
-        "precio": "149.99"
-    },
-    {
-        "titulo": "Lavadora LG",
-        "description": "Lavadora LG en perfecto estado, con capacidad de carga de 8kg y eficiencia energética A++. Funciona con agua fría y caliente",
-        "imagen": "https://picsum.photos/200/300/?random",
-        "user_id": 1,
-        "subcategoria_id": 4,
-        "telefono": "555-555-555",
-        "estado_id": 2,
-        "provincia": "FL",
-        "cod_postal": "08921",
-        "precio": "399.99"
-    }   
 ]
