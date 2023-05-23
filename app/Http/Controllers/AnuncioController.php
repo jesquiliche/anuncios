@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foto;
 use App\Models\Anuncio;
 use App\Models\Categoria;
 use App\Models\Estado;
@@ -10,6 +11,9 @@ use App\Models\Provincia;
 use App\Models\Poblacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
 
 
 class AnuncioController extends Controller
@@ -116,10 +120,30 @@ class AnuncioController extends Controller
         return redirect()->route('home');
     }
 
-    public function destroy($id)
-    {
-        $anuncio = Anuncio::findOrFail($id);
-        $anuncio->delete();
-        return redirect()->route('anuncios.index');
+    public function destroy($id){
+    
+        try {
+            DB::transaction(function () use ($id) {
+                $anuncio = Anuncio::findOrFail($id);
+                
+                foreach ($anuncio->fotos as $foto) {
+                    unlink(public_path($foto->path));
+                    $foto->delete();
+                }
+                
+                unlink(public_path($foto->path));
+                $anuncio->delete();
+            });
+            
+            // Si la transacción se completa sin errores, redirecciona a la ruta deseada
+            return redirect()->route('home');
+        } catch (\Throwable $e) {
+            // Manejo de errores en caso de fallo en la transacción
+            return $e;
+            return back()->withErrors(['error' => 'Se produjo un error al borrar el anuncio.']);
+        }
+        
+    
+        return redirect()->route('home');
     }
 }

@@ -70,10 +70,11 @@ class FotoController extends Controller
     $foto = Foto::find($id); // Obtener el objeto Foto por su ID
     
     if ($foto) {
+        unlink(public_path($foto->path));
         $foto->delete(); // Eliminar la foto
         
         // También puedes eliminar el archivo de imagen físicamente si lo deseas
-        unlink(public_path($foto->path));
+        
         return redirect()->back();
         
         // Realizar otras acciones o redirigir según tus necesidades

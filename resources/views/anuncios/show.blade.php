@@ -8,8 +8,15 @@
             @auth
                 @if (auth()->user()->id == $anuncio->user_id)
                     <div class="row m-2">
-                        <a href="{{route('anuncios.edit', ['id' => $anuncio->id])}}" class="btn btn-danger  col-sm-2 m-1">Editar</a>
-                        <a href="#" class="btn btn-danger  col-sm-2 m-1">Borrar</a>
+                        <div class="col-sm-2 mt-1">
+                        <a href="{{route('anuncios.edit', ['id' => $anuncio->id])}}" class="btn btn-danger col-sm-12">Editar</a>
+                        </div>
+                        <form action="{{ route('anuncios.delete', ['id' => $anuncio->id]) }}" method="POST" class="col-sm-2">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger col-sm-12 m-1">Borrar</button>
+                        </form>
+                                           
                     </div>
                 @endif
             @endauth
