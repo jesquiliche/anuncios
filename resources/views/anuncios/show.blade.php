@@ -35,7 +35,9 @@
                         </div>
                         <div class="col-lg-6">
                             <p>Precio : <b>{{ $anuncio->precio . '€' }}</b></p>
-                            <p>Teléfono : <b>{{ $anuncio->telefono }}</p>
+                            <p>Teléfono : <b>{{ $anuncio->telefono }}</b></p>
+                            <p>Provincia : <b>{{ $provincia->nombre }}</b></p>
+                            <p>Población : <b>{{ $poblacion->nombre }}</b></p>
                         </div>
                 </h5>
             </div>

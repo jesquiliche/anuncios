@@ -71,18 +71,17 @@
 
             <div class="container-fluid mt-3 col-lg-12 mx-auto">
                 <h4 class="text-center resaltado"><b>Anuncios</b></h4>
-                <div class="row">
+                <div class="row card3">
                     <!-- Iteración sobre los anuncios -->
                     @foreach ($anuncios as $anuncio)
                         <div class="card3 col-lg-4 mx-auto">
-                            
-
                             <a href="/anuncios/{{ $anuncio->id }}">
-                                
                                 <div class="card-title m-1">
-                                    
                                     <p class="resaltado">
+                                        <!-- Si el usuario esta autenticado -->
                                         @auth
+                                            <!-- Si el propietario del anuncio coincide con
+                                                el usuario utenticado -->
                                             @if (auth()->user()->id == $anuncio->user_id)
                                                 <i class="fas fa-edit mr-1"></i>
                                             @endif

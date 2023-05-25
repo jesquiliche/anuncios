@@ -26,7 +26,9 @@ class AnuncioController extends Controller
     public function show($id)
     {
         $anuncio = Anuncio::findOrFail($id);
-        return view('anuncios.show', compact('anuncio'));
+        $provincia=Provincia::find($anuncio->provincia);
+        $poblacion=Poblacion::find($anuncio->cod_postal);
+        return view('anuncios.show', compact('anuncio','provincia','poblacion'));
     }
 
     public function showByCategory($id)
@@ -54,7 +56,8 @@ class AnuncioController extends Controller
             'imagen' => 'required|image|max:2048',
             'precio' => 'required|numeric',
             'subcategoria_id' => 'required|exists:subcategorias,id',
-            'provincia' => 'required|string|max:255',
+            'provincia' => 'required|string|max:2',
+            'cod_postal'=> 'required|string|max:5',
             'telefono' => 'required|string|max:255',
             'estado_id'=>'required'
         ]);

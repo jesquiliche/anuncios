@@ -17,6 +17,6 @@ class Provincia extends Model
 
     public function poblaciones()
     {
-        return $this->hasMany(Poblacion::class, 'codigo', 'provincia_cod');
+        return $this->hasMany(Poblacion::class, 'provincia_cod','codigo' );
     }
 }
