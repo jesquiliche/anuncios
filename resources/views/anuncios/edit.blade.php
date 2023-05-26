@@ -1,12 +1,13 @@
 @extends('layout.layout')
 
-@section('title', 'Página de inicio')
+@section('title', 'Editar aanuncio')
 
 @section('content')
 
     <div class="card2 col-lg-10 mx-auto mt-8 p-4">
         <h4 class="text-center resaltado"><b>Editar anuncio<b></h4>
         @if ($errors->any())
+            <!-- Muestra los errores de validación -->
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -16,11 +17,16 @@
             </div>
         @endif
 
+        <!-- Formulario de edición de datos,
+            rellena los controles cob los valores del anuncio,
+            utiliza el método PUT para utilizar y el enctype`multipart/form-data'
+            para poder subir imagenres -->
         {!! Form::open([
             'route' => ['anuncios.update', $anuncio->id],
             'method' => 'PUT',
             'enctype' => 'multipart/form-data',
         ]) !!}
+        <!-- CRSF token -->
         {!! Form::token() !!}
         <div class="row">
             <div class="col-lg-6">
@@ -41,6 +47,7 @@
                         'max' => '2048',
                         'id' => 'image-input',
                     ]) !!}
+                    <!-- Mostrar errores de validación -->
                     @error('imagen')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -55,6 +62,7 @@
                         $anuncio->subcategoria_id,
                         ['class' => 'form-control'],
                     ) !!}
+                     <!-- Mostrar errores de validación -->
                     @error('subcategoria_id')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -65,6 +73,7 @@
                         'class' => 'form-control',
                         'required',
                     ]) !!}
+                    <!-- Mostrar errores de validación -->
                     @error('estado_id')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -124,9 +133,12 @@
             </div>
             <div class="card3 mx-auto mt-1">
                 <div class="row">
+                    <!-- Mostrar todas las imágnenes opcionales asociadas
+                        al anuncio -->
                     @foreach ($anuncio->fotos as $foto)
                         <div class="card3 col-lg-3 mx-auto mt-3">
                             <img src="{{ $foto->path }}" alt="Foto del anuncio" width="180px" class="zoom mx-auto">
+                            <!-- Anadir opcion de poder borrar la imagen -->
                             <div class="text-center">
                                 <form action="{{ route('fotos.destroy', ['id' => $foto->id]) }}" method="POST">
                                     @csrf
@@ -140,6 +152,7 @@
                 <div class="form-group">
                     <h4 class="text-center resaltado mt-4">¿Desea incluir más imágenes?</h4>
                     <!-- DropZone -->
+                    <!-- Permite anadir imagenes solo con arrastrar y soltar -->
                     <form action="{{ route('fotos.store') }}" method="POST" enctype="multipart/form-data" class="dropzone"
                         id="myDropzone">
                         @csrf
@@ -147,20 +160,21 @@
                     </form>
                 </div>
 
-
         </div>
     </div>
 @endsection
 
 
 @section('css')
-    <!-- Estilos de la vista-->
+    <!-- Estilos de DropZone-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css"
         crossorigin="anonymous" />
 @endsection
 
 @section('js')
     <script>
+        // Permite cambiar la imagen principal del anuncio y
+        //    hace un preview 
         document.getElementById('image-input').addEventListener('change', function(e) {
             var reader = new FileReader();
             reader.onload = function(event) {
@@ -169,9 +183,11 @@
             reader.readAsDataURL(e.target.files[0]);
         });
     </script>
-      <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <!-- opciones para Dropzzne -->
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
       <script>
           Dropzone.options.myDropzone = {
+              //Como se llamara al campo el resquest
               paramName: 'imagen',
               maxFilesize: 2, <!-- Tamaño máximo del archivo en megabytes -->
               acceptedFiles: '.jpg, .jpeg, .png', <!-- Tipos de archivo aceptados -->
