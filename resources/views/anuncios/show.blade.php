@@ -20,9 +20,10 @@
                         <form action="{{ route('anuncios.delete', ['id' => $anuncio->id]) }}" method="POST" class="col-sm-2">
                             @csrf
                             @method('DELETE')
-                            <!-- Botón para borrar el anuncio -->
-                            <button type="submit" class="btn btn-danger col-sm-12 m-1">Borrar</button>
+                            <!-- Botón para borrar el anuncio con confirmación -->
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que quieres borrar este anuncio?')" class="btn btn-danger col-sm-12 m-1">Borrar</button>
                         </form>
+                        
 
                     </div>
                 @endif

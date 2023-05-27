@@ -29,9 +29,9 @@ class FotoController extends Controller
     public function store(Request $request)
     {
         // Validar la solicitud
-       $request->validate([
-            'imagen' => 'required|image|max:2048',// Reemplaza las reglas de validación según tus necesidades
-            'anuncio_id'=>'required'
+        $request->validate([
+            'imagen' => 'required|image|max:2048', // Reemplaza las reglas de validación según tus necesidades
+            'anuncio_id' => 'required'
         ]);
 
         // Obtener el archivo de imagen
@@ -66,20 +66,15 @@ class FotoController extends Controller
     }
 
     public function destroy($id)
-{
-    $foto = Foto::find($id); // Obtener el objeto Foto por su ID
-    
-    if ($foto) {
-        //Eliminar foto dinamicamente
-        unlink(public_path($foto->path));
-        $foto->delete(); // Eliminar la foto de la base de datos        
-        
-        
-        return redirect()->back();
-        
-        // Realizar otras acciones o redirigir según tus necesidades
-    } else {
-        // La foto no existe, manejar el error o mostrar un mensaje al usuario
+    {
+        $foto = Foto::find($id); // Obtener el objeto Foto por su ID
+
+        if ($foto) {
+            //Eliminar foto fisicamente
+            unlink(public_path($foto->path));
+            $foto->delete(); // Eliminar la foto de la base de datos        
+            // Realizar otras acciones o redirigir según tus necesidades
+            return redirect()->back();
+        }
     }
-}
 }
