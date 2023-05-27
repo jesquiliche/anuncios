@@ -128,16 +128,18 @@ class AnuncioController extends Controller
     }
 
     public function destroy($id){
-    
         try {
+            //Comienza la transacción
             DB::transaction(function () use ($id) {
                 $anuncio = Anuncio::findOrFail($id);
                 
+                //Iterar sobre todas las fotos opcionales
                 foreach ($anuncio->fotos as $foto) {
-                  //  unlink($foto->path);
+                    //Borrar la foto físicamente
+                    unlink(public_path($foto->path));
                     $foto->delete();
                 }
-
+                //Borrar la imagen principal
                 unlink(public_path($anuncio->imagen));
                 $anuncio->delete();
             });
@@ -145,7 +147,7 @@ class AnuncioController extends Controller
             // Si la transacción se completa sin errores, redirecciona a la ruta deseada
             return redirect()->route('home');
         } catch (\Throwable $e) {
-            return $e->getMessage();
+            
             // Manejo de errores en caso de fallo en la transacción
             return back()->withErrors(['error' => 'Se produjo un error al borrar el anuncio.']);
         }

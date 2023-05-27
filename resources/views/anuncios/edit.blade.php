@@ -8,7 +8,7 @@
         <h4 class="text-center resaltado"><b>Editar anuncio<b></h4>
         @if ($errors->any())
             <!-- Muestra los errores de validación -->
-            <div class="alert alert-danger">
+            <div class="alert alert-danger mt-4">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

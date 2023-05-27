@@ -5,11 +5,21 @@
 @section('content')
     <section class="container mt-8 ">
         <div class="card col-lg-10 mx-auto">
-            <!-- 
-                Solo si el usuario esta autenticado -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <!--
+                    Solo si el usuario esta autenticado -->
             @auth
                 <!-- Si el usuario autenticado coincidde con
-                    el propietario del anuncios -->
+                            el propietario del anuncios -->
                 @if (auth()->user()->id == $anuncio->user_id)
                     <div class="row m-2">
                         <div class="col-sm-2 mt-1">
@@ -21,9 +31,10 @@
                             @csrf
                             @method('DELETE')
                             <!-- Botón para borrar el anuncio con confirmación -->
-                            <button type="submit" onclick="return confirm('¿Estás seguro de que quieres borrar este anuncio?')" class="btn btn-danger col-sm-12 m-1">Borrar</button>
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que quieres borrar este anuncio?')"
+                                class="btn btn-danger col-sm-12 m-1">Borrar</button>
                         </form>
-                        
+
 
                     </div>
                 @endif
