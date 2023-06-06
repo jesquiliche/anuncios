@@ -48,7 +48,7 @@ class SubCategoriaController extends Controller
 
         Subcategoria::create($data);
 
-        return redirect()->route('admin.subcategorias.index');
+        return redirect()->route('admin.subcategorias.index')->with('success', 'Subcategoría agregada correctamente');;
     }
 
     public function create()
