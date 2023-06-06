@@ -309,7 +309,7 @@ return [
         ['header' => 'ADMINISTRACIÓN'],
         [
             'text' => 'Categorías',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/categorias',
             'icon' => 'fas fa-fw fa-layer-group',
         ],
         [
@@ -317,14 +317,6 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-folder',
         ],
-        [
-            'text' => 'Anuncios',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-bullhorn',
-        ],
-      
-       
-        
         ['header' => 'USUARIOS'],
         [
             'text'       => 'Usuarios',

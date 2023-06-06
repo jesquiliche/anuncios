@@ -1,73 +1,89 @@
 @extends('adminlte::page')
 
-@section('title', 'Tablero')
+@section('title', 'Agregar Categoría')
 
 @section('content_header')
-    <h1>Editar categoria</h1>
+    <h1>Agregar Categoría</h1>
 @stop
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        {{-- Genera un formulario de actualización de bloque utilizando el modelo $bloque --}}
-        {!! Form::model($categoria,['route' => ['admin.categoria.update',$categoria],'method'=>'put']) !!}
-            {{-- Define un campo de texto para el nombre del bloque --}}
-            <div class="form-group">
-                {!! Form::label('nombre', 'Nombre') !!}
-                {!! Form::text('nombre', null, [
-                    'class' => 'form-control',
-                    'placeholder' => 'Ingrese el nombre de la categoria'
-                ]) !!}
-                
-                {{-- Muestra un mensaje de error si hay un error de validación para el campo nombre --}}
-                @error('nombre')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-                
-            </div>
-            
-            {{-- Define un campo de texto para la descripción del bloque --}}
-            <div class="form-group">
-                {!! Form::label('descripcion', 'Descripcion') !!}
-                {!! Form::textarea('descripcion', null, [
-                    'class' => 'form-control',
-                    'placeholder' => 'Ingrese la descripción de la categoria'
-                ]) !!}
-                
-                {{-- Muestra un mensaje de error si hay un error de validación para el campo descripcion --}}
-                @error('descripcion')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-                
-            </div>
-            
-            {{-- Define el botón de envío del formulario --}}
-            {!! Form::submit('Actualizar categoria', [
-                'class'=>'btn btn-primary'
+    <div class="container">
+        <div class="card col-lg-12 p-4">
+            {!! Form::model($categoria, [
+                'route' => ['admin.categoria.update', $categoria->id],
+                'files' => true,
+                'method' => 'PUT',
             ]) !!}
-            
-        {!! Form::close() !!} {{-- Cierra el formulario --}}
+
+
+            <div class="form-group">
+                {!! Form::label('nombre', 'Nombre:') !!}
+                {!! Form::text('nombre', $categoria->nombre, [
+                    'class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''),
+                    'required',
+                ]) !!}
+                @if ($errors->has('nombre'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('nombre') }}
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('descripcion', 'Descripción:') !!}
+                {!! Form::textarea('descripcion', $categoria->descripcion, [
+                    'class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''),
+                    'required',
+                ]) !!}
+                @if ($errors->has('descripcion'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('descripcion') }}
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <table>
+                    <td>
+                        {!! Form::label('imagen', 'Imagen:') !!}
+                        {!! Form::file('imagen', [
+                            'class' => 'form-control-file' . ($errors->has('imagen') ? ' is-invalid' : ''),
+                            'accept' => 'image/*',
+                            'onchange' => 'previewImage(event)',
+                        ]) !!}
+                        @if ($errors->has('imagen'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('imagen') }}
+                            </div>
+                        @endif
+                    </td>
+                    <td>
+                        <img id="preview" src="{{ $categoria->imagen }}"" alt="Preview de la imagen"
+                            style="max-width: 200px; margin-top: 10px; padding-left: 20px;">
+                    </td>
+            </div>
+
+            {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+        </div>
     </div>
-</div>
-@stop
 
-@section('css')
-    <link rel="stylesheet" href="/js/ckeditor/ckeditor.css">
-@stop
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            var preview = document.getElementById('preview');
 
-@section('js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#descripcion'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
-        $(document).ready(function() {
-            CKEDITOR.replace('descripcion');
-        });
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @stop
-
