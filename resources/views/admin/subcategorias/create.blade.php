@@ -7,14 +7,13 @@
 @stop
 
 @section('content')
-@section('content')
 <div class="card">
 	<div class="card-body">
-		{!! Form::open(['route' => 'admin.categoria.store']) !!}
+		{!! Form::open(['route' => 'admin.subcategorias.store']) !!}
 		
             <div class="form-gropup">
-                {!! Form::label('bloque', 'Bloque') !!}
-                {!! Form::select('bloque_id', $bloques->pluck('nombre', 'id'), null, ['class' => 'form-control']) !!}
+                {!! Form::label('categoria', 'Categoría') !!}
+                {!! Form::select('categoria_id', $categorias->pluck('nombre', 'id'), null, ['class' => 'form-control']) !!}
             </div>
 			<div class="form-group">
 				{!! Form::label('nombre', 'Nombre') !!}

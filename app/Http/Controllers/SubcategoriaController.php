@@ -13,15 +13,11 @@ class SubcategoriaController extends Controller
         return view('subcategorias.index', compact('subcategorias'));
     }
 
-    public function create()
-    {
-        return view('subcategorias.create');
-    }
-
+    
     public function store(Request $request)
     {
         $rules = [
-            'nombre' => 'required|string|max:255',
+            'nombre' => 'required|unique:subcategorias|string|max:150',
             'descripcion' => 'required|string',
             'categoria_id' => 'required|exists:categorias,id'
         ];
@@ -37,6 +33,12 @@ class SubcategoriaController extends Controller
         Subcategoria::create($data);
 
         return redirect()->route('subcategorias.index');
+    }
+
+    public function create2()
+    {
+
+        return view('subcategorias.create');
     }
 
     public function edit(Subcategoria $subcategoria)

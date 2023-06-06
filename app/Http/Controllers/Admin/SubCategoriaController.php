@@ -30,6 +30,31 @@ class SubCategoriaController extends Controller
         return view('admin.subcategorias.index', compact('subcategorias','categorias'));
     }
 
-    
+    public function store(Request $request)
+    {
+        $rules = [
+            'nombre' => 'required|unique:subcategorias|string|max:150',
+            'descripcion' => 'required|string',
+            'categoria_id' => 'required|exists:categorias,id'
+        ];
+
+        $request->validate($rules);
+
+        $data = $request->only([
+            'nombre',
+            'descripcion',
+            'categoria_id'
+        ]);
+
+        Subcategoria::create($data);
+
+        return redirect()->route('admin.subcategorias.index');
+    }
+
+    public function create()
+    {
+        $categorias=Categoria::all();
+        return view('admin.subcategorias.create',compact('categorias'));
+    }
    
 }

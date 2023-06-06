@@ -30,7 +30,7 @@
                     {!! Form::close() !!}
                 </td>
                 <td>
-                    <a href="#" class="btn btn-primary ml-2">Agregar</a>
+                    <a href="{{route('admin.subcategorias.create')}}" class="btn btn-primary ml-2">Agregar</a>
                 </td>
                 <td>
                     <form method="POST" action="#">
