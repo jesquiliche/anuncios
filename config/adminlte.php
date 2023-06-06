@@ -314,7 +314,7 @@ return [
         ],
         [
             'text' => 'Subcategorías',
-            'url'  => 'admin/subcategorias',
+            'route'  => 'admin.subcategorias.index',
             'icon' => 'fas fa-fw fa-folder',
         ],
         ['header' => 'USUARIOS'],

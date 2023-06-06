@@ -56,5 +56,12 @@ class SubCategoriaController extends Controller
         $categorias=Categoria::all();
         return view('admin.subcategorias.create',compact('categorias'));
     }
-   
+    public function destroy($id)
+    {
+        $subcategoria=SubCategoria::find($id);
+        
+        $subcategoria->delete();
+        return redirect()->route('admin.subcategorias.index')->with('success', 'Subcategoría eliminada correctamente');
+    }
+
 }

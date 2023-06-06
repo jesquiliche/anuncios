@@ -3,13 +3,13 @@
 @section('title', 'Tablero')
 
 @section('content_header')
-    <h1>Editar categoria</h1>
+    <h1>Editar Subcategoria</h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-body">
-        {{-- Genera un formulario de actualización de bloque utilizando el modelo $bloque --}}
+        {{-- Genera un formulario de actualización de bloque utilizando el modelo $subcategoria --}}
         {!! Form::model($categoria,['route' => ['admin.categoria.update',$categoria],'method'=>'put']) !!}
             {{-- Define un campo de texto para el nombre del bloque --}}
             <div class="form-group">

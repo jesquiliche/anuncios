@@ -17,6 +17,8 @@ Route::delete("/categorias/delete/{id}",[CategoriaController::class,'destroy'])-
 Route::get("/subcategorias",[SubCategoriaController::class,'index'])->name('admin.subcategorias.index');
 Route::post("/subcategorias/store",[SubCategoriaController::class,'store'])->name('admin.subcategorias.store');
 Route::get("/subcategorias/create",[SubCategoriaController::class,'create'])->name('admin.subcategorias.create');
+Route::delete("/subcategorias/delete/{id}",[SubCategoriaController::class,'destroy'])->name('admin.subcategorias.delete');
+
 
 
 //
