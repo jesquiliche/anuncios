@@ -10,13 +10,15 @@
 <div class="card">
     <div class="card-body">
         {{-- Genera un formulario de actualización de bloque utilizando el modelo $subcategoria --}}
-        {!! Form::model($categoria,['route' => ['admin.categoria.update',$categoria],'method'=>'put']) !!}
-            {{-- Define un campo de texto para el nombre del bloque --}}
+        {!! Form::model($subcategoria,
+            ['route' => ['admin.subcategorias.update',$subcategoria->id],
+            'method'=>'PUT']) !!}
+            {{-- Define un campo de texto para el nombre de la subcategoría --}}
             <div class="form-group">
                 {!! Form::label('nombre', 'Nombre') !!}
                 {!! Form::text('nombre', null, [
                     'class' => 'form-control',
-                    'placeholder' => 'Ingrese el nombre de la categoria'
+                    'placeholder' => 'Ingrese el nombre de la Subcategoría'
                 ]) !!}
                 
                 {{-- Muestra un mensaje de error si hay un error de validación para el campo nombre --}}
@@ -31,7 +33,7 @@
                 {!! Form::label('descripcion', 'Descripcion') !!}
                 {!! Form::textarea('descripcion', null, [
                     'class' => 'form-control',
-                    'placeholder' => 'Ingrese la descripción de la categoria'
+                    'placeholder' => 'Ingrese la descripción de la Subcategoría'
                 ]) !!}
                 
                 {{-- Muestra un mensaje de error si hay un error de validación para el campo descripcion --}}

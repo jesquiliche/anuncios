@@ -25,12 +25,7 @@
                         Agregar categoría
                     </a>
                 </td>
-                <td>
-                    <form method="POST" action="">
-                        @csrf
-                        <button type="submit" class="btn btn-primary btn-sm ml-2">Exportar a JSON</button>
-                    </form>
-                </td>
+                
         </div>
         <div class="card-body mt-2">
             <table class="table">

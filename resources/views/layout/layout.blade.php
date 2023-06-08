@@ -45,7 +45,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <a class="navbar-brand" href="/">
-                    <img src="/images/logo.png" width="60" alt="..." loading="lazy">
+                    <img src="/images/logo.jpeg" width="60" alt="..." loading="lazy">
                     <span class="nav-item resaltado">Anuncios segunda mano</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

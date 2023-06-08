@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Lista de preguntas')
+@section('title', 'Lista de subcategorías')
 
 @section('content_header')
     <h1>Lista de subcategorias</h1>
@@ -32,12 +32,7 @@
                     <td>
                         <a href="{{ route('admin.subcategorias.create') }}" class="btn btn-primary ml-2">Agregar</a>
                     </td>
-                    <td>
-                        <form method="POST" action="#">
-                            @csrf
-                            <button type="submit" class="btn btn-primary ml-2">Exportar a JSON</button>
-                        </form>
-                    </td>
+                    
                 </tr>
             </table>
         </div>
@@ -60,7 +55,7 @@
                             <td>{{ $subcategoria->descripcion }}</td>
                             
                             <td widt="10px">
-                                <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                                <a href="{{ route('admin.subcategorias.edit', ['id' => $subcategoria->id]) }}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
                             <td widt="10px">
                                 <form action="{{ route('admin.subcategorias.delete', ['id' => $subcategoria->id]) }}"" method="POST">
@@ -79,6 +74,7 @@
                 </tbody>
             </table>
         </div>
+        
     </div>
 @endsection
 

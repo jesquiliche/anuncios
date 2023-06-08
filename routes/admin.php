@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\SubCategoriaController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', [HomeController::class,'index'])->name('admin.home');
 Route::get("/categorias",[CategoriaController::class,'index'])->name('admin.categoria.index');
@@ -17,8 +18,11 @@ Route::delete("/categorias/delete/{id}",[CategoriaController::class,'destroy'])-
 Route::get("/subcategorias",[SubCategoriaController::class,'index'])->name('admin.subcategorias.index');
 Route::post("/subcategorias/store",[SubCategoriaController::class,'store'])->name('admin.subcategorias.store');
 Route::get("/subcategorias/create",[SubCategoriaController::class,'create'])->name('admin.subcategorias.create');
+Route::get("/subcategorias/edit/{id}",[SubCategoriaController::class,'edit'])->name('admin.subcategorias.edit');
+Route::put("/subcategorias/update/{id}",[SubCategoriaController::class,'update'])->name('admin.subcategorias.update');
+
 Route::delete("/subcategorias/delete/{id}",[SubCategoriaController::class,'destroy'])->name('admin.subcategorias.delete');
 
-
+Route::resource("/users",UserController::class)->names('admin.user');
 
 //

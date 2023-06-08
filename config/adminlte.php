@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>Anuncios</b>',
-    'logo_img' => '/images/logo.png',
+    'logo_img' => '/images/logo.jpeg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -322,7 +322,7 @@ return [
             'text'       => 'Usuarios',
             'icon_color' => '',
             'icon'      =>'fas fa-fw fa-user',
-            'url'        => '#',
+            'route'        => 'admin.user.index',
         ],
     ],
 

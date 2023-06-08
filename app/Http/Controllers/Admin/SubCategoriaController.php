@@ -50,7 +50,26 @@ class SubCategoriaController extends Controller
 
         return redirect()->route('admin.subcategorias.index')->with('success', 'Subcategoría agregada correctamente');;
     }
+    public function edit($id)
+    {
+        $subcategoria=SubCategoria::find($id);
+        return view('admin.subcategorias.edit',compact('subcategoria'));
+    }
 
+    public function update(Request $request,$id){
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required'
+        ]);
+    
+        $subcategoria = Subcategoria::find($id);
+        $subcategoria->nombre = $request->nombre;
+        $subcategoria->descripcion = $request->descripcion;
+    
+        $subcategoria->save();
+        return redirect()->route('admin.subcategorias.index')->with('success', 'Subcategoría agregada correctamente');
+
+    }
     public function create()
     {
         $categorias=Categoria::all();
