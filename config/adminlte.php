@@ -309,7 +309,7 @@ return [
         ['header' => 'ADMINISTRACIÓN'],
         [
             'text' => 'Categorías',
-            'url'  => 'admin/categorias',
+            'route'  => 'admin.categoria.index',
             'icon' => 'fas fa-fw fa-layer-group',
         ],
         [

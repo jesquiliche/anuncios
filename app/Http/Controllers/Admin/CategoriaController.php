@@ -56,25 +56,36 @@ class CategoriaController extends Controller
     }
     public function update(Request $request,$id)
     {
+        // Validamos los campos de la petición
         $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
             'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
+        // Buscar la categoría que deseamos actualizar
         $categoria = Categoria::find($id);
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
     
+        // Si hemos seleccionado un fichero de imagen para subir
         if ($request->hasFile('imagen')) {
+            // Recuperamos el fichero subido
             $imagen = $request->file('imagen');
+            // Recuperamos el nombre del fichero y le añadimos al principio
+            // la hora
             $imagenNombre = time() . '_' . $imagen->getClientOriginalName();
+            // Movemos el fichero a la carpeta public/images
             $imagen->move(public_path('images'), $imagenNombre);
+            // Guardamos en el campo imagen de la categoria la ruta
             $categoria->imagen = '/images/'.$imagenNombre;
         }
     
+        // Guardamos en la base de datos los cambios efectuados
         $categoria->save();
     
+        // Volvemos a la lista de categorias y mostramos
+        // un mensaje de éxito en la vista a traves de la sesión
         return redirect()->route('admin.categoria.index')->with('success', 'Categoría agregada correctamente');
     }
     

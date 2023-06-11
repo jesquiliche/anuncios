@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Tablero')
+@section('title', 'Categorías')
 
 @section('content_header')
     <h1>Lista de Categorías</h1>
@@ -73,8 +73,4 @@
 
 
     </div>
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
 @stop

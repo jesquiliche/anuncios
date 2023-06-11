@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+    <!-- Mensaje de éxito si existe -->
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -17,6 +18,7 @@
     @endif
     <div class="card">
         <div class="card-header">
+            <!-- Formulario de filtrado -->
             {!! Form::open(['route' => 'admin.subcategorias.index', 'method' => 'GET']) !!}
             {!! Form::select('categoria_id', $categorias->pluck('nombre', 'id'), request('categoria_id'), [
                 'class' => 'form-control col-md-4',
@@ -30,6 +32,7 @@
                         {!! Form::close() !!}
                     </td>
                     <td>
+                        <!-- Enlace para agregar una nueva subcategoría -->
                         <a href="{{ route('admin.subcategorias.create') }}" class="btn btn-primary ml-2">Agregar</a>
                     </td>
                     
@@ -38,7 +41,7 @@
         </div>
 
         <div class="card-body">
-            <table id="preguntas-table" class="table table-bordered table-hover">
+            <table id="subcategorias-table" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -48,6 +51,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Iteración sobre las subcategorías -->
                     @foreach ($subcategorias as $subcategoria)
                         <tr>
                             <td>{{ $subcategoria->id }}</td>
@@ -55,12 +59,15 @@
                             <td>{{ $subcategoria->descripcion }}</td>
                             
                             <td widt="10px">
+                                <!-- Enlace para editar la subcategoría -->
                                 <a href="{{ route('admin.subcategorias.edit', ['id' => $subcategoria->id]) }}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
                             <td widt="10px">
-                                <form action="{{ route('admin.subcategorias.delete', ['id' => $subcategoria->id]) }}"" method="POST">
+                                <!-- Formulario para eliminar la subcategoría -->
+                                <form action="{{ route('admin.subcategorias.delete', ['id' => $subcategoria->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
+                                    <!-- Botón de eliminación con confirmación -->
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Si borrar esta subcategoria borra todas las subcegorias y anuncios asociados,\n¿Estás seguro de que deseas eliminar esta categoría?')">
                                         Eliminar
@@ -74,52 +81,7 @@
                 </tbody>
             </table>
         </div>
-        
+        {{ $subcategorias->links('pagination::bootstrap-4') }}
     </div>
 @endsection
 
-@section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-@stop
-
-@section('js')
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#preguntas-table').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-                "language": {
-                    "decimal": "",
-                    "emptyTable": "No hay datos disponibles en la tabla",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-                    "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
-                    "infoFiltered": "(filtrado de un total de _MAX_ entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ entradas",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "No se encontraron coincidencias",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    },
-                    "aria": {
-                        "sortAscending": ": activar para ordenar la columna ascendente",
-                        "sortDescending": ": activar para ordenar la columna descendente"
-                    },
-                }
-            });
-        });
-    </script>
-@stop
