@@ -20,7 +20,6 @@ Route::post("/subcategorias/store",[SubCategoriaController::class,'store'])->nam
 Route::get("/subcategorias/create",[SubCategoriaController::class,'create'])->name('admin.subcategorias.create');
 Route::get("/subcategorias/edit/{id}",[SubCategoriaController::class,'edit'])->name('admin.subcategorias.edit');
 Route::put("/subcategorias/update/{id}",[SubCategoriaController::class,'update'])->name('admin.subcategorias.update');
-
 Route::delete("/subcategorias/delete/{id}",[SubCategoriaController::class,'destroy'])->name('admin.subcategorias.delete');
 
 Route::resource("/users",UserController::class)->names('admin.user');
