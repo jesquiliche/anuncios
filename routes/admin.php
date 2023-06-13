@@ -24,4 +24,5 @@ Route::delete("/subcategorias/delete/{id}",[SubCategoriaController::class,'destr
 
 Route::resource("/users",UserController::class)->names('admin.user');
 
+
 //

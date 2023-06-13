@@ -311,11 +311,13 @@ return [
             'text' => 'Categorías',
             'route'  => 'admin.categoria.index',
             'icon' => 'fas fa-fw fa-layer-group',
+            'can'=> 'admin.categoria.index',
         ],
         [
             'text' => 'Subcategorías',
             'route'  => 'admin.subcategorias.index',
             'icon' => 'fas fa-fw fa-folder',
+            'can'=> 'admin.subcategorias.index',
         ],
         ['header' => 'USUARIOS'],
         [
@@ -323,6 +325,7 @@ return [
             'icon_color' => '',
             'icon'      =>'fas fa-fw fa-user',
             'route'        => 'admin.user.index',
+            'can'=> 'admin.user.index',
         ],
     ],
 

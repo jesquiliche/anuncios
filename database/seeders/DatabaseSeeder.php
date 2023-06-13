@@ -21,10 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvinciaSeeder::class);
         $this->call(PoblacionSeeder::class);
         $this->call(EstadoSeeder::class);
+        $this->call(RoleSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(AnuncioSeeder::class);
-        
-    
-
     }
 }

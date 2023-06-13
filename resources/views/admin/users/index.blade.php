@@ -39,7 +39,7 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-sm">Editar</a>
                         </td>
                     </tr>
                     @endforeach
