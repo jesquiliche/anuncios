@@ -27,28 +27,35 @@ class CategoriaController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'nombre' => 'required|unique:categorias',
-            'descripcion' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-    
-        $categoria = new Categoria();
-        $categoria->nombre = $request->nombre;
-        $categoria->descripcion = $request->descripcion;
-    
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $imagenNombre = time() . '_' . $imagen->getClientOriginalName();
-            $imagen->move(public_path('images'), $imagenNombre);
-            $categoria->imagen = '/images/'.$imagenNombre;
-        }
-    
-        $categoria->save();
-    
-        return redirect()->route('admin.categoria.index')->with('success', 'Categoría agregada correctamente');
+{
+    // Validar los datos del formulario
+    $request->validate([
+        'nombre' => 'required|unique:categorias',
+        'descripcion' => 'required',
+        'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    // Crear una nueva instancia de la clase Categoria
+    $categoria = new Categoria();
+
+    // Asignar los valores del formulario a las propiedades de la instancia
+    $categoria->nombre = $request->nombre;
+    $categoria->descripcion = $request->descripcion;
+
+    // Subir y guardar la imagen si se proporciona en el formulario
+    if ($request->hasFile('imagen')) {
+        $imagen = $request->file('imagen');
+        $imagenNombre = time() . '_' . $imagen->getClientOriginalName();
+        $imagen->move(public_path('images'), $imagenNombre);
+        $categoria->imagen = '/images/'.$imagenNombre;
     }
+
+    // Guardar la instancia de Categoria en la base de datos
+    $categoria->save();
+
+    // Redireccionar a la página de índice de categorías con un mensaje de éxito
+    return redirect()->route('admin.categoria.index')->with('success', 'Categoría agregada correctamente');
+}
 
     public function edit($id){
         $categoria=Categoria::find($id);

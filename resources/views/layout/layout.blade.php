@@ -59,43 +59,48 @@
                             <a class="nav-item" href="{{ route('home') }}"><i class="fas fa-home"></i> Home<span
                                     class="sr-only">(current)</span></a>
                         </li>
-
+                        <!-- menú usuario -->
                         <li class="nav-item ml-2 dropdown">
                             <a class="nav-item dropdown-toggle ml-2" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user-plus"></i>
-                                @if (!auth()->check())
+                                @guest
+                                    <!-- Comprueba si el usuario es un invitado (no autenticado) -->
                                 @else
                                     {{ auth()->user()->name }}
-                                @endif
-
+                                    <!-- Muestra el nombre del usuario autenticado -->
+                                @endguest
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('registro') }}">Registro</a>
-                                @if (!auth()->check())
+                                <!-- Enlace para registrarse -->
+                                @guest
+                                    <!-- Comprueba si el usuario es un invitado -->
                                     <a class="dropdown-item" href="{{ route('login2') }}">Iniciar sesión</a>
-                                @endif
-
+                                    <!-- Enlace para iniciar sesión -->
+                                @endguest
                                 @can('admin.home')
-                                    <a class="dropdown-item" href={{ route('admin.home') }}>Administración</a>
+                                    <!-- Comprueba si el usuario tiene permisos de administrador -->
+                                    <a class="dropdown-item" href="{{ route('admin.home') }}">Administración</a>
+                                    <!-- Enlace para acceder a la sección de administración -->
                                 @endcan
-                                <div class="dropdown-divider"></div>
-                                @if (auth()->check())
+                                <div class="dropdown-divider"></div> <!-- Línea divisoria en el menú desplegable -->
+                                @auth
+                                    <!-- Comprueba si el usuario está autenticado -->
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
+                                        <!-- Formulario para cerrar sesión -->
                                         @csrf
                                     </form>
-
-                                    <a class="dropdown-item " href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Logout
+                                        <!-- Enlace para cerrar sesión -->
                                     </a>
-                                @endif
-
+                                @endauth
                             </div>
                         </li>
-
+                        <!-- menú usuario -->
 
                         <li class="nav-item ml-2">
                             <a href="{{ route('anuncios.create') }}"><i class="far fa-file-alt"></i> Publicar
@@ -112,21 +117,19 @@
 
     @yield('content')
     <!-- Contenido específico de cada vista -->
-    
+
     @yield('js')
     <footer>
         <div class="container-fluid text-center mt-4 bg-dark">
             <div class="container mx-auto bg-dark">
-                <br/>
-            <h6 class="text-white text-center mt-4">Copyrigth &copy; Jesús Quintana Esquiliche
-                
-            </h6>
-            <br/>
+                <br />
+                <h6 class="text-white text-center mt-4">Copyrigth &copy; Jesús Quintana Esquiliche</h6>
+                <br />
             </div>
-            
+
         </div>
     </footer>
-    
+
 
 </main>
 

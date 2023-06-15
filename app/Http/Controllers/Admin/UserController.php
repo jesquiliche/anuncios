@@ -16,10 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        $users=User::all();
+        // Obtiene todos los usuarios de la base de datos
+        $users = User::all();
 
-        return view('admin.users.index',compact('users'));
+        // Retorna la vista 'admin.users.index' y pasa la variable $users a la vista
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // No implementado
     }
 
     /**
@@ -40,7 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // No implementado
     }
 
     /**
@@ -51,7 +52,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        // No implementado
     }
 
     /**
@@ -62,9 +63,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles=Role::all();
-        return view('admin.users.edit',compact('user','roles'));
-        //
+        // Obtiene todos los roles de la base de datos
+        $roles = Role::all();
+
+        // Retorna la vista 'admin.users.edit' y pasa las variables $user y $roles a la vista
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -76,15 +79,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-       
-     /*
-        $roles=$request->roles;
+        // Obtiene los roles seleccionados del formulario
+        $roles = $request->roles;
+
+        // Asigna los roles al usuario
         $user->syncRoles($roles);
 
+        // Guarda los cambios en la base de datos
         $user->save();
 
+        // Redirige al usuario a la página de índice de usuarios con un mensaje de éxito
         return redirect()->route('admin.user.index')->with('success', 'Usuario actualizado correctamente');
-    */
     }
 
     /**
@@ -95,6 +100,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        // No implementado
     }
 }

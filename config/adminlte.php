@@ -311,12 +311,14 @@ return [
             'text' => 'Categorías',
             'route'  => 'admin.categoria.index',
             'icon' => 'fas fa-fw fa-layer-group',
+            //Solo usuarios con permisos 'admin.categoria.index' (Admin y editor)
             'can'=> 'admin.categoria.index',
         ],
         [
             'text' => 'Subcategorías',
             'route'  => 'admin.subcategorias.index',
             'icon' => 'fas fa-fw fa-folder',
+            //Solo usuarios con permisos 'admin.subcategorias.index' (Admin y editor)
             'can'=> 'admin.subcategorias.index',
         ],
         ['header' => 'USUARIOS'],
@@ -325,6 +327,7 @@ return [
             'icon_color' => '',
             'icon'      =>'fas fa-fw fa-user',
             'route'        => 'admin.user.index',
+            //Solo usuarios con permisos 'admin.user.index' (Admin y editor)
             'can'=> 'admin.user.index',
         ],
     ],

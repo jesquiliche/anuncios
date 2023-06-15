@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+<!-- Muestra mensajes de éxito de vistas auxiliares, como la vista de edición -->
 @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -19,8 +20,9 @@
         <div class="card-header">
             <h3 class="card-title">Usuarios</h3>
         </div>
-        <!-- /.card-header -->
+        
         <div class="card-body">
+            <!-- Creamos una tabla para mostrar la lista de usuarios -->
             <table id="users-table" class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -32,13 +34,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Para cada usuario -->
                     @foreach($users as $user)
                     <tr>
+                        <!-- Mostrar el id -->
                         <td><b>{{ $user->id }}</b></td>
+                        <!-- Mostrar el nombre -->
                         <td><b>{{ $user->name }}</b></td>
+                        <!-- Mostrar el email -->
                         <td>{{ $user->email }}</td>
+                         <!-- Mostrar fecha de creación -->
                         <td>{{ $user->created_at }}</td>
                         <td>
+                            <!-- Enlace a la vista de edición -->
                             <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-sm">Editar</a>
                         </td>
                     </tr>
@@ -46,12 +54,13 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
+        
     </div>
-    <!-- /.card -->
+    
 @stop
 
 @section('css')
+    <!-- Estilos de DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 @stop
 
@@ -60,9 +69,10 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Inicialización de DataTables
             $('#users-table').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": true,
                 "ordering": true,
                 "info": true,
