@@ -16,11 +16,14 @@
             @endif
 
             <!--
-                    Solo si el usuario esta autenticado -->
+                        Solo si el usuario esta autenticado -->
+
+            <!-- Si el usuario autenticado coincidde con
+                                el propietario del anuncios -->
             @auth
-                <!-- Si el usuario autenticado coincidde con
-                            el propietario del anuncios -->
-                @if (auth()->user()->id == $anuncio->user_id)
+                @if (auth()->user()->id == $anuncio->user_id ||
+                        auth()->user()->hasRole('Admin') ||
+                        auth()->user()->hasRole('Editor'))
                     <div class="row m-2">
                         <div class="col-sm-2 mt-1">
                             <!-- Botón para editar el anuncio -->
@@ -34,11 +37,10 @@
                             <button type="submit" onclick="return confirm('¿Estás seguro de que quieres borrar este anuncio?')"
                                 class="btn btn-danger col-sm-12 m-1">Borrar</button>
                         </form>
-
-
                     </div>
                 @endif
             @endauth
+
             <div class="card-header m-1">
                 <h4 class="resaltado text-center"><b>{{ $anuncio->titulo }}</b></h4>
                 <h5>

@@ -81,18 +81,22 @@
                                         <!-- Si el usuario esta autenticado -->
                                         @auth
                                             <!-- Si el propietario del anuncio coincide con
-                                                el usuario utenticado -->
-                                            @if (auth()->user()->id == $anuncio->user_id)
+                                                        el usuario utenticado -->
+                                            @if (auth()->user()->id == $anuncio->user_id ||
+                                                    auth()->user()->hasRole('Admin') ||
+                                                    auth()->user()->hasRole('Editor'))
                                                 <i class="fas fa-edit mr-1"></i>
                                             @endif
                                         @endauth
-                                        {{ $anuncio->titulo }}</p>
+                                        {{ $anuncio->titulo }}
+                                    </p>
                                 </div>
                                 <div class="card-body m-1">
-                                    
-                                    <img src="{{ $anuncio->imagen }}" class="d-block w-100 rounded" alt="{{ $anuncio->titulo }}">
+
+                                    <img src="{{ $anuncio->imagen }}" class="d-block w-100 rounded"
+                                        alt="{{ $anuncio->titulo }}">
                                     <p>{{ $anuncio->description }}</p>
-                                    precio : <b>{{ $anuncio->precio ."€"}}</b>
+                                    precio : <b>{{ $anuncio->precio . '€' }}</b>
                                 </div>
                             </a>
                         </div>
