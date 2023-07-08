@@ -27,10 +27,7 @@
             <br />
             <table>
                 <tr>
-                    <td>
-                        {!! Form::submit('Filtrar', ['class' => 'btn btn-primary']) !!}
-                        {!! Form::close() !!}
-                    </td>
+                  
                     <td>
                         <!-- Enlace para agregar una nueva subcategoría -->
                         <a href="{{ route('admin.subcategorias.create') }}" class="btn btn-primary ml-2">Agregar</a>
