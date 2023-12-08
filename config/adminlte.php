@@ -328,7 +328,7 @@ return [
             'icon'      =>'fas fa-fw fa-user',
             'route'        => 'admin.user.index',
             //Solo usuarios con permisos 'admin.user.index' (Admin y editor)
-      //     'can'=> 'admin.user.index',
+           'can'=> 'admin.user.index',
         ],
     ],
 

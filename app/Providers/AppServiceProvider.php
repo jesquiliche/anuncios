@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         // Redirige todas las solicitudes HTTP a HTTPS
         if (config('app.env') === 'production') {
             \Illuminate\Support\Facades\URL::forceScheme('https');
+       
         }
     }
 }
